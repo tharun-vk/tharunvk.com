@@ -1,0 +1,6 @@
+# Clean URLs — Cloudflare Pages automatically handles trailing slashes
+# and .html extensions, but this is here for explicitness.
+/about       /about.html       200
+/experience  /experience.html  200
+/work        /work.html        200
+/writing     /writing.html     200

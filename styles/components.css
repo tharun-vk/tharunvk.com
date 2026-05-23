@@ -1,0 +1,1007 @@
+/* ============================================================
+   components.css
+   All reusable site patterns, organised by section.
+   ============================================================ */
+
+
+/* ============================================================
+   CORNER FRAME
+   Fixed corner brackets that frame the entire viewport.
+   ============================================================ */
+
+.frame {
+  position: fixed;
+  inset: 12px;
+  pointer-events: none;
+  z-index: var(--z-frame);
+  border: 1px solid rgba(232, 228, 214, 0.04);
+}
+
+.frame .c {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--waterline);
+}
+
+.frame .c.tl { top: -1px;    left: -1px;  border-right: none;  border-bottom: none; }
+.frame .c.tr { top: -1px;    right: -1px; border-left: none;   border-bottom: none; }
+.frame .c.bl { bottom: -1px; left: -1px;  border-right: none;  border-top: none; }
+.frame .c.br { bottom: -1px; right: -1px; border-left: none;   border-top: none; }
+
+
+/* ============================================================
+   STATUS BAR
+   The thin operator-style strip at the very top.
+   ============================================================ */
+
+.statusbar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 14px var(--s-6);
+  background: rgba(11, 16, 24, 0.85);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--rivet);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: var(--ls-mono-md);
+  text-transform: uppercase;
+  color: var(--paper-mute);
+  z-index: var(--z-statusbar);
+}
+
+.statusbar .left,
+.statusbar .right {
+  display: flex;
+  gap: var(--s-5);
+  align-items: center;
+}
+
+.statusbar .right { justify-content: flex-end; }
+
+.statusbar .center {
+  color: var(--paper);
+  letter-spacing: var(--ls-mono-lg);
+}
+
+.statusbar .clk { color: var(--waterline); }
+
+.statusbar .live {
+  color: var(--signal);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.statusbar .pip {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--signal);
+  box-shadow: 0 0 8px rgba(216, 168, 90, 0.6);
+  animation: breathe var(--d-breathe) ease-in-out infinite;
+}
+
+
+/* ============================================================
+   DOMAIN TICKER
+   A slow horizontal ticker that conveys "alive" without noise.
+   ============================================================ */
+
+.ticker {
+  height: 28px;
+  background: var(--abyss-2);
+  border-bottom: 1px solid var(--rivet);
+  overflow: hidden;
+  position: relative;
+}
+
+.ticker-track {
+  white-space: nowrap;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: var(--ls-mono-lg);
+  text-transform: uppercase;
+  color: var(--waterline);
+  padding-top: 8px;
+  animation: marquee var(--d-marquee) linear infinite;
+  display: inline-block;
+}
+
+.ticker-track .w { color: var(--signal); }
+.ticker-track .m { color: var(--paper-mute); }
+
+
+/* ============================================================
+   PRIMARY NAV
+   Logo · centered links · right-side action.
+   ============================================================ */
+
+nav.primary {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: var(--s-5) var(--s-7);
+  gap: var(--s-7);
+  border-bottom: 1px solid var(--rivet);
+}
+
+.brand {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand em {
+  font-style: italic;
+  color: var(--waterline);
+  font-weight: 400;
+}
+
+.brand-glyph {
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--waterline);
+  transform: rotate(45deg);
+  position: relative;
+}
+
+.brand-glyph::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: var(--waterline);
+}
+
+nav.primary ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: var(--s-6);
+}
+
+nav.primary a {
+  color: var(--paper-dim);
+  font-family: var(--mono);
+  font-size: var(--t-eyebrow);
+  letter-spacing: var(--ls-mono-md);
+  text-transform: uppercase;
+  transition: color var(--d-base);
+  padding-bottom: var(--s-1);
+  border-bottom: 1px solid transparent;
+}
+
+nav.primary a:hover {
+  color: var(--paper);
+  border-bottom-color: var(--waterline);
+}
+
+nav.primary a.active {
+  color: var(--waterline);
+  border-bottom-color: var(--waterline);
+}
+
+.nav-cta {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: var(--ls-mono-md);
+  text-transform: uppercase;
+  color: var(--paper-dim);
+  border: 1px solid var(--rivet);
+  padding: var(--s-2) 14px;
+  transition: border-color var(--d-base), color var(--d-base);
+}
+
+.nav-cta:hover {
+  border-color: var(--waterline);
+  color: var(--waterline);
+}
+
+.nav-cta em {
+  color: var(--waterline);
+  font-style: normal;
+}
+
+
+/* ============================================================
+   HERO
+   Two-column: large headline + tagline + lede / meta-card.
+   ============================================================ */
+
+.hero {
+  padding: var(--s-11) var(--s-7) var(--s-10);
+  max-width: var(--max-content);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: var(--s-9);
+  align-items: end;
+}
+
+.hero .eyebrow {
+  font-family: var(--mono);
+  font-size: var(--t-eyebrow);
+  letter-spacing: var(--ls-mono-md);
+  text-transform: uppercase;
+  color: var(--waterline);
+  margin-bottom: var(--s-5);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.hero .eyebrow::before {
+  content: "";
+  width: 48px;
+  height: 1px;
+  background: var(--waterline);
+  box-shadow: var(--glow-waterline);
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: var(--t-h1);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.025em;
+  color: var(--paper);
+  margin-bottom: var(--s-5);
+}
+
+.hero h1 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--waterline);
+}
+
+.hero .tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: var(--t-tagline);
+  line-height: 1.35;
+  color: var(--paper-dim);
+  max-width: 620px;
+  letter-spacing: -0.01em;
+  margin-bottom: 20px;
+}
+
+.hero .tagline em {
+  font-style: normal;
+  color: var(--paper);
+  font-weight: 400;
+}
+
+.hero .lede {
+  font-family: var(--mono);
+  font-size: var(--t-body-mono);
+  line-height: var(--lh-loose);
+  color: var(--paper-mute);
+  max-width: 540px;
+  letter-spacing: 0.01em;
+}
+
+.hero .lede .accent { color: var(--waterline); }
+
+
+/* ============================================================
+   META CARD
+   The "file" card that sits in the hero (and reused elsewhere).
+   Key/value pairs styled as schema annotations.
+   ============================================================ */
+
+.meta-card {
+  border: 1px solid var(--rivet);
+  background: rgba(19, 25, 35, 0.5);
+  padding: 26px;
+  position: relative;
+}
+
+.meta-card::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 24px;
+  width: 48px;
+  height: 1px;
+  background: var(--waterline);
+  box-shadow: var(--glow-waterline);
+}
+
+.meta-card .file-id {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: var(--ls-mono-md);
+  text-transform: uppercase;
+  color: var(--waterline);
+  margin-bottom: 18px;
+  padding-bottom: var(--s-3);
+  border-bottom: 1px dashed rgba(78, 163, 196, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.meta-card .file-id .pip {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--signal);
+  box-shadow: var(--glow-signal);
+  animation: breathe var(--d-breathe) ease-in-out infinite;
+  display: inline-block;
+}
+
+.meta-card .row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 14px;
+  padding: var(--s-3) 0;
+  border-top: 1px dashed rgba(232, 228, 214, 0.06);
+}
+
+.meta-card .row:first-of-type {
+  border-top: none;
+  padding-top: var(--s-1);
+}
+
+.meta-card .k {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--paper-mute);
+  padding-top: var(--s-1);
+}
+
+.meta-card .v {
+  font-family: var(--serif);
+  font-size: 17px;
+  color: var(--paper);
+  line-height: var(--lh-snug);
+  font-style: italic;
+  font-weight: 300;
+}
+
+.meta-card .v small {
+  display: block;
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 10px;
+  color: var(--paper-mute);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: var(--s-1);
+}
+
+.meta-card .v.accent {
+  color: var(--waterline);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.meta-card .v.domains-list {
+  display: block;
+  padding-top: 2px;
+}
+
+.meta-card .v.domains-list small {
+  margin-top: 0;
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   SECTION HEADER
+   The numbered band that introduces each major section.
+   ============================================================ */
+
+.sec-head {
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: 60px var(--s-7) 0;
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: var(--s-6);
+  align-items: baseline;
+  border-top: 1px solid var(--rivet);
+  padding-top: 36px;
+}
+
+.sec-head .num {
+  font-family: var(--mono);
+  font-size: var(--t-eyebrow);
+  letter-spacing: var(--ls-mono-lg);
+  text-transform: uppercase;
+  color: var(--waterline);
+}
+
+.sec-head h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: var(--t-h2);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--paper);
+}
+
+.sec-head h2 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--waterline);
+}
+
+.sec-head .meta {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: var(--ls-mono-md);
+  text-transform: uppercase;
+  color: var(--paper-mute);
+  text-align: right;
+}
+
+
+/* ============================================================
+   PLACEHOLDER RIBBON
+   Used to mark sections that aren't fully written yet.
+   Honest signposting; remove the markup when content lands.
+   ============================================================ */
+
+.placeholder-ribbon {
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: var(--s-2) var(--s-7) 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.placeholder-ribbon .tag {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: var(--ls-mono-md);
+  text-transform: uppercase;
+  color: var(--signal);
+  border: 1px dashed rgba(216, 168, 90, 0.4);
+  padding: var(--s-1) 10px;
+}
+
+
+/* ============================================================
+   EXPERIENCE — the Arc
+   A vertical chronology of roles, each with a uniform format:
+   year · role · description · promo block · marker · status.
+   ============================================================ */
+
+.experience {
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: var(--s-7) var(--s-7) var(--s-10);
+}
+
+.exp-intro {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 1.55;
+  color: var(--paper-dim);
+  max-width: 720px;
+  margin-bottom: var(--s-8);
+}
+
+.exp-intro em {
+  color: var(--paper);
+  font-style: normal;
+}
+
+.exp-list {
+  border-top: 1px solid var(--rivet);
+  border-left: 1px solid var(--rivet);
+}
+
+.exp-row {
+  display: grid;
+  grid-template-columns: 120px 1.6fr 1fr 200px;
+  gap: var(--s-6);
+  padding: var(--s-6) 28px;
+  border-bottom: 1px solid var(--rivet);
+  align-items: start;
+  position: relative;
+  transition: background var(--d-slow) ease;
+}
+
+.exp-row:last-child { border-bottom: none; }
+
+.exp-row::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--waterline);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform var(--d-base) ease;
+}
+
+.exp-row:hover { background: rgba(19, 25, 35, 0.5); }
+.exp-row:hover::before { transform: scaleY(1); }
+
+.exp-row.current::before {
+  background: var(--signal);
+  transform: scaleY(1);
+}
+
+.exp-row .yr {
+  font-family: var(--mono);
+  font-size: var(--t-eyebrow);
+  letter-spacing: var(--ls-mono-sm);
+  text-transform: uppercase;
+  color: var(--paper-mute);
+  padding-top: var(--s-2);
+}
+
+.exp-row.current .yr { color: var(--signal); }
+
+.exp-row .body h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: var(--t-h3);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--paper);
+  margin-bottom: 6px;
+}
+
+.exp-row .body h3 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--waterline);
+}
+
+.exp-row .body .role {
+  font-family: var(--mono);
+  font-size: var(--t-eyebrow);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+  margin-bottom: var(--s-3);
+}
+
+.exp-row .body p.note {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 16px;
+  color: var(--paper-dim);
+  line-height: 1.55;
+  max-width: 460px;
+}
+
+/* Promo block — the "Time to promotion / Typical timing" pair */
+
+.exp-row .promo {
+  margin-top: 10px;
+  border-top: 1px dashed rgba(232, 228, 214, 0.08);
+  padding-top: 10px;
+  font-family: var(--mono);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-2) 14px;
+}
+
+.exp-row .promo .label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: var(--ls-mono-sm);
+  text-transform: uppercase;
+  color: var(--paper-mute);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.exp-row .promo .val {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 15px;
+  text-transform: none;
+  letter-spacing: -0.005em;
+  color: var(--paper);
+  line-height: 1.1;
+}
+
+.exp-row .promo .val.fast {
+  color: var(--waterline);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.exp-row .promo .val.typical { color: var(--paper-mute); }
+
+/* Marker column — badges and notes */
+
+.exp-row .marker {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: var(--ls-mono-sm);
+  text-transform: uppercase;
+  color: var(--paper-mute);
+}
+
+.exp-row .marker .badge {
+  display: inline-block;
+  border: 1px solid var(--rivet);
+  padding: var(--s-1) 10px;
+  color: var(--paper-dim);
+  margin-bottom: var(--s-2);
+  margin-right: 6px;
+}
+
+.exp-row .marker .badge.fast {
+  color: var(--waterline);
+  border-color: var(--waterline-d);
+}
+
+.exp-row .marker .badge.young {
+  color: var(--signal);
+  border-color: rgba(216, 168, 90, 0.5);
+}
+
+.exp-row .marker .note {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--paper-mute);
+  text-transform: none;
+  letter-spacing: 0;
+  margin-top: var(--s-1);
+  line-height: 1.4;
+}
+
+/* Status column */
+
+.exp-row .status {
+  text-align: right;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: var(--ls-mono-sm);
+  text-transform: uppercase;
+}
+
+.exp-row .status .v {
+  display: inline-block;
+  color: var(--paper-dim);
+  border: 1px solid var(--rivet);
+  padding: var(--s-1) 10px;
+}
+
+.exp-row.current .status .v {
+  color: var(--signal);
+  border-color: rgba(216, 168, 90, 0.5);
+}
+
+
+/* ============================================================
+   WORK — case study cards
+   2-column grid of cards, each with metrics or scope.
+   ============================================================ */
+
+.work {
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: var(--s-7) var(--s-7) var(--s-10);
+}
+
+.work-intro {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 1.55;
+  color: var(--paper-dim);
+  max-width: 720px;
+  margin-bottom: var(--s-8);
+}
+
+.work-intro em {
+  color: var(--paper);
+  font-style: normal;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid var(--rivet);
+  border-left: 1px solid var(--rivet);
+}
+
+.work-card {
+  border-right: 1px solid var(--rivet);
+  border-bottom: 1px solid var(--rivet);
+  padding: 36px var(--s-6);
+  cursor: pointer;
+  position: relative;
+  transition: background var(--d-slow) ease;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+}
+
+.work-card:hover { background: rgba(19, 25, 35, 0.6); }
+
+.work-card::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--waterline);
+  box-shadow: var(--glow-waterline);
+  transition: width var(--d-slow) var(--ease-out);
+}
+
+.work-card:hover::after { width: 100%; }
+
+.work-card .meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 28px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: var(--ls-mono-sm);
+  text-transform: uppercase;
+  color: var(--paper-mute);
+}
+
+.work-card .meta .num {
+  color: var(--waterline);
+  font-weight: 500;
+}
+
+.work-card .meta .yr {
+  font-style: italic;
+  font-family: var(--serif);
+  font-size: 13px;
+}
+
+.work-card h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--paper);
+  margin-bottom: var(--s-2);
+}
+
+.work-card h3 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--waterline);
+}
+
+.work-card .role {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: var(--ls-mono-sm);
+  text-transform: uppercase;
+  color: var(--paper-dim);
+  margin-bottom: var(--s-5);
+}
+
+.work-card .desc {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--paper-dim);
+  margin-bottom: auto;
+  padding-bottom: var(--s-5);
+  max-width: 460px;
+}
+
+.work-card .metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-4);
+  padding-top: var(--s-5);
+  border-top: 1px dashed rgba(232, 228, 214, 0.1);
+}
+
+.work-card .metric .big {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--waterline);
+  margin-bottom: 6px;
+}
+
+.work-card .metric .lbl {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--paper-mute);
+  line-height: 1.4;
+}
+
+/* live variant — Reveleer, in-flight project. */
+
+.work-card.live .meta .num { color: var(--signal); }
+.work-card.live h3 em { color: var(--signal); }
+
+.work-card.live .scope {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px var(--s-4);
+  padding-top: var(--s-5);
+  border-top: 1px dashed rgba(216, 168, 90, 0.3);
+}
+
+.work-card.live .scope-item {
+  font-family: var(--mono);
+  font-size: var(--t-eyebrow);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.work-card.live .scope-item::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  background: var(--signal);
+  flex-shrink: 0;
+}
+
+.work-card.live .live-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--signal);
+}
+
+.work-card.live .live-tag::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--signal);
+  box-shadow: var(--glow-signal);
+  animation: breathe 2.4s ease-in-out infinite;
+}
+
+
+/* ============================================================
+   WRITING — empty state
+   ============================================================ */
+
+.writing-teaser {
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: var(--s-7) var(--s-7) var(--s-10);
+}
+
+.writing-empty {
+  border: 1px dashed var(--rivet);
+  padding: 60px 48px;
+  text-align: center;
+  background: rgba(19, 25, 35, 0.3);
+}
+
+.writing-empty .tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: var(--ls-mono-lg);
+  text-transform: uppercase;
+  color: var(--paper-mute);
+  margin-bottom: 20px;
+}
+
+.writing-empty p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 22px;
+  color: var(--paper-dim);
+  line-height: 1.4;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.writing-empty p em {
+  color: var(--waterline);
+  font-style: normal;
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+footer {
+  padding: var(--s-7);
+  border-top: 1px solid var(--rivet);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: var(--ls-mono-md);
+  text-transform: uppercase;
+  color: var(--paper-mute);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+}
+
+footer .right {
+  color: var(--paper-dim);
+  display: flex;
+  gap: var(--s-5);
+}
+
+footer a {
+  color: var(--paper-dim);
+  transition: color var(--d-base);
+}
+
+footer a:hover { color: var(--waterline); }
+
+
+/* ============================================================
+   RESPONSIVE — mobile collapse
+   ============================================================ */
+
+@media (max-width: 1000px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: var(--s-7);
+    padding: var(--s-9) var(--gutter-mobile) 60px;
+  }
+
+  .sec-head,
+  .experience,
+  .work,
+  .writing-teaser,
+  .placeholder-ribbon,
+  footer {
+    padding-left: var(--gutter-mobile);
+    padding-right: var(--gutter-mobile);
+  }
+
+  .exp-row {
+    grid-template-columns: 1fr;
+    gap: var(--s-3);
+  }
+
+  .work-grid { grid-template-columns: 1fr; }
+  .work-card .metrics { grid-template-columns: 1fr 1fr; }
+
+  nav.primary {
+    grid-template-columns: 1fr;
+    gap: var(--s-4);
+  }
+
+  nav.primary ul {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+}

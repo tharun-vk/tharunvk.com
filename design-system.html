@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design System — tharunvk.com</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles/tokens.css" />
+  <link rel="stylesheet" href="/styles/base.css" />
+  <link rel="stylesheet" href="/styles/components.css" />
+  <style>
+    .ds-section { max-width: var(--max-content); margin: 0 auto; padding: var(--s-7); border-top: 1px solid var(--rivet); }
+    .ds-section h2 { font-family: var(--serif); font-weight: 400; font-size: 36px; letter-spacing: -0.02em; margin-bottom: var(--s-5); }
+    .ds-section h2 em { font-style: italic; color: var(--waterline); }
+    .ds-section h3 { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: var(--ls-mono-md); color: var(--paper-mute); margin: var(--s-6) 0 var(--s-3); }
+    .ds-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: var(--s-3); }
+    .swatch { border: 1px solid var(--rivet); padding: var(--s-3); }
+    .swatch .chip { height: 60px; margin-bottom: var(--s-3); border: 1px solid rgba(232,228,214,0.08); }
+    .swatch .name { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper-dim); }
+    .swatch .hex { font-family: var(--mono); font-size: 10px; color: var(--paper-mute); margin-top: 4px; }
+    .typescale { display: flex; flex-direction: column; gap: var(--s-4); }
+    .typespec { display: grid; grid-template-columns: 200px 1fr; gap: var(--s-5); align-items: baseline; border-bottom: 1px dashed var(--rivet); padding-bottom: var(--s-3); }
+    .typespec .label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper-mute); }
+  </style>
+</head>
+<body>
+
+<div class="frame"><span class="c tl"></span><span class="c tr"></span><span class="c bl"></span><span class="c br"></span></div>
+
+<div class="statusbar">
+  <div class="left"><span class="live"><span class="pip"></span>Design system · preview</span></div>
+  <div class="center">TVK · Tokens</div>
+  <div class="right"><span class="clk">v 1.0</span></div>
+</div>
+
+<main>
+
+<section class="ds-section">
+  <h2>Color <em>tokens</em></h2>
+
+  <h3>Backgrounds</h3>
+  <div class="ds-grid">
+    <div class="swatch"><div class="chip" style="background:var(--abyss);"></div><div class="name">--abyss</div><div class="hex">#0b1018</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--abyss-2);"></div><div class="name">--abyss-2</div><div class="hex">#131923</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--abyss-3);"></div><div class="name">--abyss-3</div><div class="hex">#1a2030</div></div>
+  </div>
+
+  <h3>Foreground</h3>
+  <div class="ds-grid">
+    <div class="swatch"><div class="chip" style="background:var(--paper);"></div><div class="name">--paper</div><div class="hex">#e8e4d6</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--paper-dim);"></div><div class="name">--paper-dim</div><div class="hex">#a8a59a</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--paper-mute);"></div><div class="name">--paper-mute</div><div class="hex">#6c6a63</div></div>
+  </div>
+
+  <h3>Accents</h3>
+  <div class="ds-grid">
+    <div class="swatch"><div class="chip" style="background:var(--waterline);"></div><div class="name">--waterline</div><div class="hex">#4ea3c4</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--waterline-d);"></div><div class="name">--waterline-d</div><div class="hex">#296a83</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--signal);"></div><div class="name">--signal</div><div class="hex">#d8a85a</div></div>
+  </div>
+
+  <h3>Borders</h3>
+  <div class="ds-grid">
+    <div class="swatch"><div class="chip" style="background:var(--rivet);"></div><div class="name">--rivet</div><div class="hex">#262d3b</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--rivet-h);"></div><div class="name">--rivet-h</div><div class="hex">#323a4a</div></div>
+  </div>
+</section>
+
+<section class="ds-section">
+  <h2>Type <em>scale</em></h2>
+  <div class="typescale">
+    <div class="typespec"><div class="label">--t-h1 / serif</div><div style="font-family:var(--serif);font-weight:400;font-size:var(--t-h1);line-height:0.95;letter-spacing:-0.025em;">Simple on the surface.</div></div>
+    <div class="typespec"><div class="label">--t-h2 / serif</div><div style="font-family:var(--serif);font-weight:400;font-size:var(--t-h2);letter-spacing:-0.02em;">The <em style="color:var(--waterline);">arc</em></div></div>
+    <div class="typespec"><div class="label">--t-h3 / serif</div><div style="font-family:var(--serif);font-weight:400;font-size:var(--t-h3);">Senior PM · <em style="color:var(--waterline);">Reveleer</em></div></div>
+    <div class="typespec"><div class="label">--t-tagline / italic</div><div style="font-family:var(--serif);font-style:italic;font-weight:300;font-size:var(--t-tagline);color:var(--paper-dim);">building enterprise software in regulated, data-heavy domains</div></div>
+    <div class="typespec"><div class="label">--t-prose / serif</div><div style="font-family:var(--serif);font-size:var(--t-prose);color:var(--paper-dim);">Twelve years across healthcare, automobile, investment banking, and consulting.</div></div>
+    <div class="typespec"><div class="label">--t-body-mono</div><div style="font-family:var(--mono);font-size:var(--t-body-mono);color:var(--paper-mute);">Mono body / metadata text appears at this size.</div></div>
+    <div class="typespec"><div class="label">--t-eyebrow / mono UC</div><div style="font-family:var(--mono);font-size:var(--t-eyebrow);text-transform:uppercase;letter-spacing:var(--ls-mono-md);color:var(--waterline);">Senior Product Manager · 12+ years</div></div>
+  </div>
+</section>
+
+<section class="ds-section">
+  <h2>Meta <em>card</em></h2>
+  <div style="max-width:380px;">
+    <aside class="meta-card">
+      <div class="file-id">
+        <span>FILE · DEMO / 2026 / 01</span>
+        <span class="pip"></span>
+      </div>
+      <div class="row"><span class="k">Field</span><span class="v">Sample value<small>secondary line</small></span></div>
+      <div class="row"><span class="k">Accent</span><span class="v accent">Highlighted</span></div>
+      <div class="row"><span class="k">Plain</span><span class="v">Another value</span></div>
+    </aside>
+  </div>
+</section>
+
+<section class="ds-section">
+  <h2>Badge <em>variants</em></h2>
+  <div style="font-family:var(--mono);font-size:10px;letter-spacing:var(--ls-mono-sm);text-transform:uppercase;display:flex;gap:var(--s-3);flex-wrap:wrap;">
+    <span style="border:1px solid var(--rivet);padding:var(--s-1) 10px;color:var(--paper-dim);">Default</span>
+    <span style="border:1px solid var(--waterline-d);padding:var(--s-1) 10px;color:var(--waterline);">Fast</span>
+    <span style="border:1px solid rgba(216,168,90,0.5);padding:var(--s-1) 10px;color:var(--signal);">Young / Live</span>
+  </div>
+</section>
+
+<section class="ds-section">
+  <h2>Motion <em>tokens</em></h2>
+  <div style="font-family:var(--mono);font-size:11px;color:var(--paper-dim);">
+    Hover the items below to see each duration token in action.
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-3);margin-top:var(--s-4);">
+    <div style="border:1px solid var(--rivet);padding:var(--s-5);transition:border-color var(--d-fast);" onmouseover="this.style.borderColor='var(--waterline)';" onmouseout="this.style.borderColor='var(--rivet)';">
+      <div style="font-family:var(--mono);font-size:10px;color:var(--waterline);">--d-fast · 200ms</div>
+    </div>
+    <div style="border:1px solid var(--rivet);padding:var(--s-5);transition:border-color var(--d-base);" onmouseover="this.style.borderColor='var(--waterline)';" onmouseout="this.style.borderColor='var(--rivet)';">
+      <div style="font-family:var(--mono);font-size:10px;color:var(--waterline);">--d-base · 350ms</div>
+    </div>
+    <div style="border:1px solid var(--rivet);padding:var(--s-5);transition:border-color var(--d-slow);" onmouseover="this.style.borderColor='var(--waterline)';" onmouseout="this.style.borderColor='var(--rivet)';">
+      <div style="font-family:var(--mono);font-size:10px;color:var(--waterline);">--d-slow · 600ms</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>Design system reference · tharunvk.com</div>
+  <div class="right"><a href="/">← Back to index</a></div>
+</footer>
+
+</body>
+</html>

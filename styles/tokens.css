@@ -1,0 +1,97 @@
+/* ============================================================
+   tokens.css
+   The design tokens for tharunvk.com — the single source of
+   truth for color, typography, spacing, and motion.
+   Edit values here; every component picks them up automatically.
+   ============================================================ */
+
+:root {
+
+  /* ----- COLORS ----- */
+
+  /* Background scale — deep navy, almost ink, with hints of blue */
+  --abyss:        #0b1018;   /* page background */
+  --abyss-2:      #131923;   /* surfaces, cards */
+  --abyss-3:      #1a2030;   /* elevated surfaces */
+
+  /* Border / hairline scale */
+  --rivet:        #262d3b;   /* primary hairline */
+  --rivet-h:      #323a4a;   /* hover state */
+
+  /* Foreground / text */
+  --paper:        #e8e4d6;   /* primary text */
+  --paper-dim:    #a8a59a;   /* secondary text */
+  --paper-mute:   #6c6a63;   /* tertiary text, labels */
+
+  /* Accents — used sparingly and semantically */
+  --waterline:    #4ea3c4;   /* primary accent — structure, italic emphasis */
+  --waterline-d:  #296a83;   /* shadow / glow base */
+  --signal:       #d8a85a;   /* secondary accent — "live" / current state only */
+
+  /* ----- TYPOGRAPHY ----- */
+
+  --serif: 'Fraunces', Georgia, serif;
+  --mono:  'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+  /* Type scale — clamped for fluid responsive sizing */
+  --t-eyebrow:    11px;                                      /* mono labels */
+  --t-body-mono:  12px;                                      /* mono body */
+  --t-body:       16px;                                      /* serif body */
+  --t-prose:      clamp(16px, 1.6vw, 18px);                  /* large body prose */
+  --t-tagline:    clamp(22px, 2.4vw, 30px);                  /* hero subtitle */
+  --t-h3:         26px;                                      /* row title */
+  --t-h2:         clamp(40px, 5vw, 64px);                    /* section title */
+  --t-h1:         clamp(56px, 8vw, 116px);                   /* hero headline */
+
+  /* Line heights */
+  --lh-tight:     0.95;
+  --lh-snug:      1.15;
+  --lh-base:      1.6;
+  --lh-loose:     1.7;
+
+  /* Letter spacing — used for mono uppercase labels */
+  --ls-mono-sm:   0.18em;
+  --ls-mono-md:   0.22em;
+  --ls-mono-lg:   0.28em;
+
+  /* ----- SPACING ----- */
+  /* One scale, used everywhere. */
+
+  --s-1:    4px;
+  --s-2:    8px;
+  --s-3:    12px;
+  --s-4:    16px;
+  --s-5:    24px;
+  --s-6:    32px;
+  --s-7:    40px;
+  --s-8:    56px;
+  --s-9:    80px;
+  --s-10:  120px;
+  --s-11:  140px;
+
+  /* ----- LAYOUT ----- */
+
+  --max-content:     1240px;
+  --gutter:          var(--s-7);   /* 40px desktop */
+  --gutter-mobile:   var(--s-5);   /* 24px mobile */
+
+  /* ----- MOTION ----- */
+
+  --ease-out:        cubic-bezier(0.2, 0.6, 0.2, 1);
+  --d-fast:          200ms;
+  --d-base:          350ms;
+  --d-slow:          600ms;
+  --d-breathe:       3s;       /* live status pip */
+  --d-marquee:       60s;      /* domain ticker */
+
+  /* ----- ELEVATION (used sparingly) ----- */
+  --glow-waterline:  0 0 6px var(--waterline-d);
+  --glow-signal:     0 0 6px var(--signal);
+
+  /* ----- Z-INDEX ----- */
+  --z-grid:        1;
+  --z-noise:       2;
+  --z-content:     3;
+  --z-statusbar:  50;
+  --z-frame:      80;
+}
