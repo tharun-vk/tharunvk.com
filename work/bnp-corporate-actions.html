@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Corporate Actions at BNP Paribas — Tharun VK</title>
+  <meta name="description" content="Re-architecting BNP Paribas's legacy corporate actions processing system around a configurable rule engine. STP rate from 38% to 82% in the year following deployment." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/styles/tokens.css" />
+  <link rel="stylesheet" href="/styles/base.css" />
+  <link rel="stylesheet" href="/styles/components.css" />
+
+  <style>
+    /* Case-study-specific layout patterns. */
+
+    .case-hero {
+      max-width: var(--max-content, 1240px);
+      margin: 0 auto;
+      padding: var(--s-11) var(--s-7) var(--s-8);
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(280px, 1fr);
+      gap: var(--s-8);
+      align-items: start;
+    }
+    .case-hero .lead .eyebrow { margin-bottom: var(--s-5); }
+    .case-hero .lead h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(44px, 7vw, 76px);
+      line-height: 0.98;
+      letter-spacing: -0.025em;
+      color: var(--paper);
+      margin-bottom: var(--s-5);
+    }
+    .case-hero .lead h1 em {
+      font-style: italic;
+      color: var(--waterline);
+      font-weight: 300;
+    }
+    .case-hero .lead .subtitle {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: var(--t-tagline);
+      color: var(--paper-dim);
+      line-height: 1.4;
+      max-width: 50ch;
+    }
+
+    .metric-strip {
+      max-width: var(--max-content, 1240px);
+      margin: 0 auto;
+      padding: var(--s-6) var(--s-7);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-5);
+      border-top: 1px solid var(--rivet);
+      border-bottom: 1px solid var(--rivet);
+    }
+    .metric-strip .metric {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-2);
+    }
+    .metric-strip .metric .big {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--paper);
+    }
+    .metric-strip .metric .big em {
+      font-style: italic;
+      color: var(--waterline);
+      font-weight: 300;
+    }
+    .metric-strip .metric .lbl {
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-mono-md);
+      color: var(--paper-mute);
+    }
+    .metric-strip .metric .delta {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--paper-dim);
+      letter-spacing: 0.05em;
+    }
+
+    .case-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: var(--s-10) var(--s-7) var(--s-9);
+    }
+    .case-section {
+      margin-bottom: var(--s-9);
+    }
+    .case-section:last-child { margin-bottom: 0; }
+    .case-section .sec-mark {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-mono-md);
+      color: var(--paper-mute);
+      margin-bottom: var(--s-4);
+      display: flex;
+      align-items: baseline;
+      gap: var(--s-3);
+    }
+    .case-section .sec-mark .num { color: var(--paper-mute); }
+    .case-section .sec-mark .ttl { color: var(--waterline); }
+    .case-section .sec-mark .ttl em { font-style: italic; }
+    .case-section p {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1.65;
+      color: var(--paper-dim);
+      margin-bottom: var(--s-4);
+    }
+    .case-section p:last-child { margin-bottom: 0; }
+    .case-section p em {
+      font-style: italic;
+      color: var(--paper);
+    }
+    .case-section p .accent {
+      color: var(--waterline);
+      font-style: italic;
+    }
+
+    /* Diagram block — breaks out wider than the prose */
+    .case-diagram {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: var(--s-7) var(--s-7) var(--s-9);
+    }
+    .case-diagram .caption {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-mono-md);
+      color: var(--paper-mute);
+      margin-bottom: var(--s-4);
+      display: flex;
+      align-items: baseline;
+      gap: var(--s-3);
+    }
+    .case-diagram .caption .num { color: var(--paper-mute); }
+    .case-diagram .caption .ttl { color: var(--waterline); }
+    .case-diagram .caption .ttl em { font-style: italic; }
+    .case-diagram .svg-wrap {
+      width: 100%;
+      border: 1px solid var(--rivet);
+      background: rgba(19, 25, 35, 0.4);  /* subtle abyss-2 panel */
+      padding: var(--s-6) var(--s-5);
+    }
+    .case-diagram svg { width: 100%; height: auto; display: block; }
+    .case-diagram .legend {
+      margin-top: var(--s-4);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--s-5);
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-mono-md);
+      color: var(--paper-mute);
+    }
+    .case-diagram .legend .item { display: inline-flex; align-items: center; gap: var(--s-2); }
+    .case-diagram .legend .dot {
+      width: 8px;
+      height: 8px;
+      display: inline-block;
+    }
+    .case-diagram .legend .dot.amber { background: var(--signal); border-radius: 50%; }
+    .case-diagram .legend .dot.water { background: var(--waterline); }
+
+    .reflection {
+      max-width: 720px;
+      margin: 0 auto var(--s-9);
+      padding: var(--s-6) var(--s-7);
+      border-top: 1px dashed var(--rivet);
+      border-bottom: 1px dashed var(--rivet);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--s-5);
+    }
+    .reflection .item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: var(--s-5);
+      align-items: baseline;
+    }
+    .reflection .item .label {
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-mono-md);
+      color: var(--paper-mute);
+    }
+    .reflection .item .text {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 17px;
+      line-height: 1.55;
+      color: var(--paper-dim);
+    }
+
+    .case-nav-back {
+      max-width: var(--max-content, 1240px);
+      margin: 0 auto;
+      padding: var(--s-5) var(--s-7) 0;
+    }
+    .case-nav-back a {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-mono-md);
+      color: var(--paper-mute);
+      text-decoration: none;
+      transition: color var(--d-base, 350ms);
+    }
+    .case-nav-back a:hover { color: var(--waterline); }
+
+    @media (max-width: 880px) {
+      .case-hero {
+        grid-template-columns: 1fr;
+        padding: var(--s-9) var(--s-5) var(--s-7);
+        gap: var(--s-6);
+      }
+      .metric-strip {
+        grid-template-columns: 1fr;
+        gap: var(--s-5);
+        padding: var(--s-5);
+      }
+      .case-body { padding: var(--s-8) var(--s-5); }
+      .case-diagram { padding: var(--s-5) var(--s-5) var(--s-7); }
+      .case-diagram .svg-wrap { padding: var(--s-4) var(--s-2); }
+      .reflection { padding: var(--s-5); }
+      .reflection .item { grid-template-columns: 1fr; gap: var(--s-2); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="frame">
+  <span class="c tl"></span><span class="c tr"></span>
+  <span class="c bl"></span><span class="c br"></span>
+</div>
+
+<div class="statusbar">
+  <div class="left">
+    <span class="live"><span class="pip"></span>Currently · Reveleer</span>
+    <span>Sr Product Manager</span>
+  </div>
+  <div class="center">TVK · Work / Case 003</div>
+  <div class="right">
+    <span class="clk">Chennai, IN · IST</span>
+    <span>Rev 2026.05</span>
+  </div>
+</div>
+
+<nav class="primary">
+  <div class="brand"><a href="/" style="display:inline-flex;align-items:center;gap:14px;"><span class="brand-glyph"></span>Tharun <em>VK</em></a></div>
+  <ul>
+    <li><a href="/">Index</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/experience.html">Experience</a></li>
+    <li><a href="/work.html" class="active">Work</a></li>
+    <li><a href="/writing.html">Writing</a></li>
+  </ul>
+  <a href="mailto:ktharun1993@gmail.com" class="nav-cta">Get in touch <em>↗</em></a>
+</nav>
+
+<main>
+
+  <div class="case-nav-back">
+    <a href="/work.html">← All work</a>
+  </div>
+
+  <section class="case-hero">
+    <div class="lead">
+      <div class="eyebrow">§ Case 003 · 2019 — 2020 · Investment Banking</div>
+      <h1>Corporate Actions at <em>BNP Paribas</em></h1>
+      <p class="subtitle">Re-architecting a legacy processing system around a configurable rule engine — and the moment the redesign nearly came apart on the undocumented codebase underneath it.</p>
+    </div>
+
+    <aside class="meta-card">
+      <div class="file-id">
+        <span>FILE · TVK / CASE / 003</span>
+        <span class="pip"></span>
+      </div>
+      <div class="row">
+        <span class="k">Product</span>
+        <span class="v">Corp Actions system<small>End-to-end processing</small></span>
+      </div>
+      <div class="row">
+        <span class="k">Domain</span>
+        <span class="v accent">Investment Banking<small>Global Markets</small></span>
+      </div>
+      <div class="row">
+        <span class="k">Role</span>
+        <span class="v">Product Owner<small>Senior BA · Led pod of 3 BAs</small></span>
+      </div>
+      <div class="row">
+        <span class="k">Years</span>
+        <span class="v">2019 — 2020<small>within Oct 2018 – Aug 2021</small></span>
+      </div>
+      <div class="row">
+        <span class="k">Team</span>
+        <span class="v">Cross-functional<small>3 BAs · Eng + lead · QA · support</small></span>
+      </div>
+    </aside>
+  </section>
+
+  <section class="metric-strip">
+    <div class="metric">
+      <div class="big">38<em>→</em>82<em>%</em></div>
+      <div class="lbl">STP rate</div>
+      <div class="delta">+44 pts · year-one</div>
+    </div>
+    <div class="metric">
+      <div class="big">73<em>→</em>81</div>
+      <div class="lbl">CSAT</div>
+      <div class="delta">+8 pts</div>
+    </div>
+    <div class="metric">
+      <div class="big">~1<em> </em>FTE</div>
+      <div class="lbl">Ops time reclaimed</div>
+      <div class="delta">~1,800 hrs / year</div>
+    </div>
+  </section>
+
+  <article class="case-body">
+
+    <div class="case-section">
+      <div class="sec-mark"><span class="num">§ 01</span><span class="ttl"><em>Context</em></span></div>
+      <p>The product was a legacy corporate actions processing system, a long-lived piece of BNP's Global Markets infrastructure serving two very different rooms. On one side, the arbitrage trading desk. On the other, prime brokerage clients, banks, insurers, and other institutions, each with their own elections to make.</p>
+      <p>The system worked. People had frustrations with it, but they were the kind of frustrations a team learns to live with. The automation opportunities visible to everyone were treated the way most teams treat them, as a list of small wins to pick off one by one.</p>
+    </div>
+
+    <div class="case-section">
+      <div class="sec-mark"><span class="num">§ 02</span><span class="ttl"><em>Constraints</em></span></div>
+      <p>The team had a packed backlog and no headcount approval. A redesign meant absorbing the discovery, framing, and solutioning work on top of the usual delivery rhythm, sprints, retros, smaller requirements, the team itself. The codebase carried a decade of business logic, much of it written by people no longer on the team, much of it undocumented. And engineering, already running at capacity on small fixes, had a tempo nobody wanted to disrupt for a year-long bet.</p>
+    </div>
+
+    <div class="case-section">
+      <div class="sec-mark"><span class="num">§ 03</span><span class="ttl">The <em>call</em></span></div>
+      <p>The obvious move was the one the team was already making, document the manual touchpoints, ship them as small enhancements, work through the backlog. I argued the opposite, in three pitches shaped to three audiences.</p>
+      <p>To business leadership, a long-term bet, a year of foundational work that would make every future change faster and the whole product cheaper to run. To tech leadership, tech debt, maintainability, a stack moved forward. To the users themselves, the arbitrage desk and the prime brokerage operations, it was their own time back, every manual touchpoint a meeting, a sign-off, a sprint validation on someone else's clock.</p>
+      <p>When leadership asked to reduce scope mid-project, I brought it back as a cost-to-value question with numbers. They were convinced. <em>The position held.</em></p>
+    </div>
+
+  </article>
+
+  <!-- DIAGRAM BLOCK — sits between §03 and §04 -->
+  <section class="case-diagram" aria-labelledby="diagram-caption">
+    <div class="caption" id="diagram-caption">
+      <span class="num">FIG · 01</span>
+      <span class="ttl">The architectural <em>change</em></span>
+    </div>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 880 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Architectural diagram showing the corporate actions processing pipeline before and after the rule engine redesign.">
+
+        <defs>
+          <!-- Box style -->
+          <style>
+            .box-fill { fill: rgba(232, 228, 214, 0.04); }
+            .box-stroke { stroke: #262d3b; stroke-width: 1; fill: none; }
+            .box-stroke-warm { stroke: rgba(216, 168, 90, 0.55); stroke-width: 1; fill: none; }
+            .box-stroke-cool { stroke: #4ea3c4; stroke-width: 1; fill: none; }
+            .box-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; fill: #e8e4d6; text-transform: uppercase; letter-spacing: 0.18em; }
+            .box-sub { font-family: 'JetBrains Mono', monospace; font-size: 9px; fill: #6c6a63; text-transform: uppercase; letter-spacing: 0.18em; }
+            .row-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #6c6a63; text-transform: uppercase; letter-spacing: 0.22em; }
+            .row-desc { font-family: 'JetBrains Mono', monospace; font-size: 9px; fill: #a8a59a; letter-spacing: 0.05em; }
+            .flow-line { stroke: #323a4a; stroke-width: 1; fill: none; }
+            .flow-line-cool { stroke: #4ea3c4; stroke-width: 1; fill: none; opacity: 0.7; }
+            .flow-line-dashed { stroke: #4ea3c4; stroke-width: 1; fill: none; stroke-dasharray: 3 3; opacity: 0.6; }
+            .pip-amber { fill: #d8a85a; }
+            .pip-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; fill: #a8a59a; letter-spacing: 0.1em; }
+            .rule-block-fill { fill: rgba(78, 163, 196, 0.08); }
+            .rule-block-stroke { stroke: rgba(78, 163, 196, 0.5); stroke-width: 1; fill: none; }
+            .rule-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; fill: #4ea3c4; text-transform: uppercase; letter-spacing: 0.15em; }
+            .strike { stroke: #d8a85a; stroke-width: 1; opacity: 0.6; }
+          </style>
+        </defs>
+
+        <!-- ===================== BEFORE ROW ===================== -->
+        <text x="40" y="32" class="row-label">Before</text>
+        <text x="40" y="48" class="row-desc">Three layers · message layer brittle · manual recovery</text>
+
+        <!-- Notifications box -->
+        <rect x="40" y="80" width="170" height="60" class="box-fill" />
+        <rect x="40" y="80" width="170" height="60" class="box-stroke" />
+        <text x="55" y="110" class="box-label">Notifications</text>
+        <text x="55" y="128" class="box-sub">Golden sources · Bloomberg</text>
+
+        <!-- Arrow notifications -> messages -->
+        <path d="M 210 110 L 340 110" class="flow-line" />
+        <path d="M 335 105 L 345 110 L 335 115" class="flow-line" />
+
+        <!-- Messages box — BRITTLE LAYER (signal amber stroke) -->
+        <rect x="345" y="80" width="190" height="60" class="box-fill" />
+        <rect x="345" y="80" width="190" height="60" class="box-stroke-warm" />
+        <text x="360" y="110" class="box-label" fill="#d8a85a">Messages</text>
+        <text x="360" y="128" class="box-sub">Bundling logic · brittle</text>
+
+        <!-- Arrow messages -> files -->
+        <path d="M 535 110 L 665 110" class="flow-line" />
+        <path d="M 660 105 L 670 110 L 660 115" class="flow-line" />
+
+        <!-- Files box -->
+        <rect x="670" y="80" width="170" height="60" class="box-fill" />
+        <rect x="670" y="80" width="170" height="60" class="box-stroke" />
+        <text x="685" y="110" class="box-label">Files</text>
+        <text x="685" y="128" class="box-sub">Processing happens here</text>
+
+        <!-- Failure modes — labeled amber pips clustered under Messages -->
+        <text x="345" y="170" class="row-desc">Failure modes requiring manual intervention</text>
+
+        <!-- Failure pip 1 -->
+        <circle cx="358" cy="195" r="4" class="pip-amber" />
+        <text x="370" y="199" class="pip-label">Grouping conflicts</text>
+
+        <!-- Failure pip 2 -->
+        <circle cx="358" cy="217" r="4" class="pip-amber" />
+        <text x="370" y="221" class="pip-label">Source reconciliation</text>
+
+        <!-- Failure pip 3 -->
+        <circle cx="358" cy="239" r="4" class="pip-amber" />
+        <text x="370" y="243" class="pip-label">Missing or malformed fields</text>
+
+        <!-- Failure pip 4 -->
+        <circle cx="358" cy="261" r="4" class="pip-amber" />
+        <text x="370" y="265" class="pip-label">Manual override / rerun</text>
+
+        <!-- ============== DIVIDER ============== -->
+        <line x1="40" y1="305" x2="840" y2="305" class="flow-line" stroke-dasharray="2 4" />
+
+        <!-- ===================== AFTER ROW ===================== -->
+        <text x="40" y="335" class="row-label">After</text>
+        <text x="40" y="351" class="row-desc">Two layers · logic lifted into a configurable rule engine</text>
+
+        <!-- Notifications box -->
+        <rect x="40" y="380" width="170" height="60" class="box-fill" />
+        <rect x="40" y="380" width="170" height="60" class="box-stroke" />
+        <text x="55" y="410" class="box-label">Notifications</text>
+        <text x="55" y="428" class="box-sub">Cleaned · normalised</text>
+
+        <!-- Arrow notifications -> files (skipping messages) -->
+        <path d="M 210 410 L 665 410" class="flow-line" />
+        <path d="M 660 405 L 670 410 L 660 415" class="flow-line" />
+
+        <!-- "Messages layer removed" callout -->
+        <text x="370" y="395" class="row-desc" fill="#6c6a63">— message layer removed —</text>
+
+        <!-- Files box -->
+        <rect x="670" y="380" width="170" height="60" class="box-fill" />
+        <rect x="670" y="380" width="170" height="60" class="box-stroke-cool" />
+        <text x="685" y="410" class="box-label">Files</text>
+        <text x="685" y="428" class="box-sub">Composed from rules</text>
+
+        <!-- Rule engine strip beneath -->
+        <text x="40" y="475" class="row-desc">Rule engine · governs notification-to-file composition</text>
+
+        <!-- Rule block 1 -->
+        <rect x="40" y="488" width="190" height="22" class="rule-block-fill" />
+        <rect x="40" y="488" width="190" height="22" class="rule-block-stroke" />
+        <text x="50" y="503" class="rule-label">Source reconciliation</text>
+
+        <!-- Rule block 2 -->
+        <rect x="240" y="488" width="190" height="22" class="rule-block-fill" />
+        <rect x="240" y="488" width="190" height="22" class="rule-block-stroke" />
+        <text x="250" y="503" class="rule-label">Notification grouping</text>
+
+        <!-- Rule block 3 -->
+        <rect x="440" y="488" width="190" height="22" class="rule-block-fill" />
+        <rect x="440" y="488" width="190" height="22" class="rule-block-stroke" />
+        <text x="450" y="503" class="rule-label">File composition</text>
+
+        <!-- Rule block 4 -->
+        <rect x="640" y="488" width="200" height="22" class="rule-block-fill" />
+        <rect x="640" y="488" width="200" height="22" class="rule-block-stroke" />
+        <text x="650" y="503" class="rule-label">Field validation</text>
+
+        <!-- Connector lines from rule engine up to the pipeline -->
+        <path d="M 135 488 L 135 440" class="flow-line-dashed" />
+        <path d="M 335 488 L 335 440" class="flow-line-dashed" />
+        <path d="M 535 488 L 535 440" class="flow-line-dashed" />
+        <path d="M 740 488 L 740 440" class="flow-line-dashed" />
+
+      </svg>
+    </div>
+    <div class="legend">
+      <span class="item"><span class="dot amber"></span>Manual intervention</span>
+      <span class="item"><span class="dot water"></span>Configurable rule</span>
+    </div>
+  </section>
+
+  <article class="case-body" style="padding-top: 0;">
+
+    <div class="case-section">
+      <div class="sec-mark"><span class="num">§ 04</span><span class="ttl">What <em>almost broke</em></span></div>
+      <p>The risk surfaced once engineering started looking at what a real rebuild would take. The undocumented decade of logic in the existing codebase had to be carried forward without losing edge cases nobody could fully describe. A full rewrite as code was not viable. The team would never finish reverse-engineering the legacy.</p>
+      <p>The rule engine emerged here, as the response. Logic would not be rewritten, it would be lifted forward as configurable rules, ordered, named, and inspectable. <em>What was understood became explicit. What was uncertain became a rule the team could flag, isolate, and validate against production behaviour.</em> The redesign survived because the solution stopped asking engineering to do something that could not be done.</p>
+    </div>
+
+    <div class="case-section">
+      <div class="sec-mark"><span class="num">§ 05</span><span class="ttl"><em>Outcome</em></span></div>
+      <p>Straight-through processing moved from 38% to 82% in the year following deployment. CSAT lifted from 73 to 81, mostly because the manual touchpoints had been the friction the score was tracking, and the redesign removed them at the source. The operations team got roughly 1,800 hours back annually, close to a full FTE of operations work, plus an unmeasured but larger reduction on the customer side.</p>
+      <p>The second-order outcome was not in the pitch. Engineering velocity climbed after the rule engine was live, because features that used to require code changes, QA cycles, and deployment now landed as rule changes. <em>The redesign repaid the bet faster than the original pitch had promised.</em></p>
+    </div>
+
+  </article>
+
+  <section class="reflection">
+    <div class="item">
+      <div class="label">What I'd do differently</div>
+      <div class="text">Bring the trading desk and prime brokerage ops into the framing conversations earlier. The rule engine emerged from talking to the team. Some of it would have surfaced sooner with the users in the same room.</div>
+    </div>
+    <div class="item">
+      <div class="label">What this taught me</div>
+      <div class="text">Listen for the shared problem before reaching for a solution. The strongest answers come out of what the team has already described to itself.</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div>© 2026 · Tharun VK · <a href="mailto:ktharun1993@gmail.com">ktharun1993@gmail.com</a></div>
+  <div class="right">
+    <a href="https://www.linkedin.com/in/tharunvk/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <span>Rev 2026.05 · Chennai</span>
+  </div>
+</footer>
+
+</body>
+</html>
