@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Work — Tharun VK</title>
-  <meta name="description" content="About Tharun VK — Senior Product Manager." />
+  <meta name="description" content="Selected work by Tharun VK — case studies of products shipped across healthcare, automobile, investment banking, and consulting." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,6 +13,72 @@
   <link rel="stylesheet" href="/styles/tokens.css" />
   <link rel="stylesheet" href="/styles/base.css" />
   <link rel="stylesheet" href="/styles/components.css" />
+
+  <style>
+    /* Minimal local additions for the work index hero — matches the existing
+       hero pattern from index.html but single-column. */
+    .work-index-hero {
+      max-width: var(--max-content, 1240px);
+      margin: 0 auto;
+      padding: var(--s-11) var(--s-7) var(--s-7);
+    }
+    .work-index-hero .eyebrow { margin-bottom: var(--s-5); }
+    .work-index-hero h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(48px, 8vw, 96px);
+      line-height: 0.95;
+      letter-spacing: -0.025em;
+      color: var(--paper);
+      margin-bottom: var(--s-5);
+    }
+    .work-index-hero h1 em {
+      font-style: italic;
+      color: var(--waterline);
+      font-weight: 300;
+    }
+    .work-index-hero .tagline {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: var(--t-tagline);
+      color: var(--paper-dim);
+      line-height: 1.4;
+      max-width: 60ch;
+    }
+    .work-index-hero .tagline em { color: var(--paper); font-style: italic; }
+
+    /* Make card→case-study links blend seamlessly */
+    .work-card-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+    .work-card-link:hover .work-card { /* nudge a card-level hover on link wrap */
+      border-color: var(--rivet-h, #323a4a);
+    }
+    /* Small "read case study" footer label on linked cards */
+    .work-card .read-more {
+      margin-top: var(--s-4);
+      padding-top: var(--s-3);
+      border-top: 1px dashed var(--rivet);
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-mono-md);
+      color: var(--waterline);
+    }
+    .work-card .in-writing {
+      margin-top: var(--s-4);
+      padding-top: var(--s-3);
+      border-top: 1px dashed var(--rivet);
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-mono-md);
+      color: var(--paper-mute);
+    }
+  </style>
 </head>
 <body>
 
@@ -46,14 +112,93 @@
 </nav>
 
 <main>
-  <section class="hero" style="grid-template-columns: 1fr; padding-top: var(--s-11);">
-    <div>
-      <div class="eyebrow">§ Work · standing by</div>
-      <h1>Selected <em>work.</em></h1>
-      <p class="tagline">Full case studies for each shipped product — context, scope, decisions, outcomes. Being written. The short version sits on the <a href="/" style="color:var(--waterline);">Index</a> for now.</p>
-      <p class="lede">If you want to <span class="accent">reach out in the meantime</span>, <a href="mailto:ktharun1993@gmail.com" style="color:var(--waterline);">email</a> or <a href="https://www.linkedin.com/in/tharunvk/" target="_blank" rel="noopener" style="color:var(--waterline);">LinkedIn</a> both work.</p>
+
+  <section class="work-index-hero">
+    <div class="eyebrow">§ Work · case studies</div>
+    <h1>Selected <em>work.</em></h1>
+    <p class="tagline">Products I've owned end-to-end, with the outcomes they moved. The <em>BNP corporate actions</em> story is up first, the others are landing.</p>
+  </section>
+
+  <!-- Card grid — reuses the home page work-card pattern -->
+  <section class="work" style="padding-top: 0;">
+    <div class="work-grid">
+
+      <!-- LIVE / IN FLIGHT — Reveleer -->
+      <article class="work-card live">
+        <div class="meta">
+          <span class="num">№ 001</span>
+          <span class="live-tag">Live · in flight</span>
+        </div>
+        <h3>Risk Analytics at <em>Reveleer</em></h3>
+        <div class="role">Senior PM · End-to-end owner · since Jan 2026</div>
+        <p class="desc">A healthcare risk analytics product. Owning the strategy, the feature design, the solutioning, and the full release cadence, from PRD through ship and into the field.</p>
+        <div class="scope">
+          <span class="scope-item">Product strategy</span>
+          <span class="scope-item">Feature design</span>
+          <span class="scope-item">Solutioning</span>
+          <span class="scope-item">Competitive analysis</span>
+          <span class="scope-item">PRD cadence</span>
+          <span class="scope-item">E2E ownership</span>
+        </div>
+        <div class="in-writing">Case study · landing soon</div>
+      </article>
+
+      <!-- Ford -->
+      <article class="work-card">
+        <div class="meta">
+          <span class="num">№ 002</span>
+          <span class="yr">2023 — 2025</span>
+        </div>
+        <h3>Vehicle Off-Road at <em>Ford</em></h3>
+        <div class="role">Senior PM → Platform PM</div>
+        <p class="desc">Command Center and Data Services, two products serving Ford's global service operations, plus a platform expansion that absorbed adjacent projects. Led a 30+ cross-functional team and shipped feature waves against real field pain points.</p>
+        <div class="metrics">
+          <div class="metric"><div class="big">12%</div><div class="lbl">repair cycle ↓</div></div>
+          <div class="metric"><div class="big">18%</div><div class="lbl">QoQ adoption ↑</div></div>
+          <div class="metric"><div class="big">16%</div><div class="lbl">CSAT lift</div></div>
+        </div>
+        <div class="in-writing">Case study · in writing</div>
+      </article>
+
+      <!-- BNP — THE FULL CASE STUDY LINK -->
+      <a href="/work/bnp-corporate-actions.html" class="work-card-link">
+        <article class="work-card">
+          <div class="meta">
+            <span class="num">№ 003</span>
+            <span class="yr">2018 — 2021</span>
+          </div>
+          <h3>Corporate Actions at <em>BNP Paribas</em></h3>
+          <div class="role">Product Owner · Global Markets</div>
+          <p class="desc">Owned the product roadmap for the global Corporate Actions product, serving internal trading desks and institutional prime brokerage. Re-architected the processing core around a configurable rule engine.</p>
+          <div class="metrics">
+            <div class="metric"><div class="big">38→82%</div><div class="lbl">STP rate</div></div>
+            <div class="metric"><div class="big">+8</div><div class="lbl">pts CSAT</div></div>
+            <div class="metric"><div class="big">~1 FTE</div><div class="lbl">ops reclaimed</div></div>
+          </div>
+          <div class="read-more">Read case study →</div>
+        </article>
+      </a>
+
+      <!-- Barclays -->
+      <article class="work-card">
+        <div class="meta">
+          <span class="num">№ 004</span>
+          <span class="yr">2015 — 2018</span>
+        </div>
+        <h3>Regulatory Reporting at <em>Barclays</em></h3>
+        <div class="role">Asst. Manager — Analyst</div>
+        <p class="desc">Automated key reporting processes across risk, finance, and treasury, and designed credit-risk platform features and dashboards used by global compliance teams to improve decision-making and accuracy.</p>
+        <div class="metrics">
+          <div class="metric"><div class="big">10+</div><div class="lbl">processes auto.</div></div>
+          <div class="metric"><div class="big">550+</div><div class="lbl">man-days saved</div></div>
+          <div class="metric"><div class="big">Global</div><div class="lbl">dashboard scope</div></div>
+        </div>
+        <div class="in-writing">Case study · in writing</div>
+      </article>
+
     </div>
   </section>
+
 </main>
 
 <footer>
