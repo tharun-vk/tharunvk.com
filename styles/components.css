@@ -542,15 +542,22 @@ main .hero {
 
 .exp-row .promo {
   display: grid;
-  grid-template-columns: 1fr 1px 1fr;
-  gap: var(--s-4);
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-5);
   align-items: start;
   padding: var(--s-3) 0;
   border-top: 1px dashed var(--rivet);
   max-width: 380px;
 }
-.exp-row .promo::before { content: ''; }
-.exp-row .promo > div { display: flex; flex-direction: column; gap: 2px; }
+.exp-row .promo > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.exp-row .promo > div + div {
+  padding-left: var(--s-5);
+  border-left: 1px dashed var(--rivet);
+}
 .exp-row .promo .label {
   font-family: var(--mono);
   font-size: 9px;
@@ -726,9 +733,10 @@ main .hero {
 }
 .work-card .metric .big {
   font-family: var(--serif);
-  font-weight: 600;
-  font-size: 22px;
-  color: var(--paper);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 26px;
+  color: var(--waterline);
   line-height: 1;
   margin-bottom: 6px;
 }
@@ -757,6 +765,28 @@ main .hero {
   text-transform: uppercase;
   letter-spacing: var(--ls-mono-sm);
   color: var(--paper-dim);
+}
+
+/* ----- LIVE card (Reveleer) overrides ----- */
+/* The italic brand name picks up the warm signal colour, reinforcing
+   the "currently / in flight" character of this card. */
+.work-card.live h3 em {
+  color: var(--signal);
+}
+/* Scope items get a small amber pip before their text, mirroring the
+   live indicator language used throughout the site. */
+.work-card.live .scope .scope-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.work-card.live .scope .scope-item::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--signal);
+  flex-shrink: 0;
 }
 
 
