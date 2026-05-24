@@ -98,16 +98,20 @@
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: var(--ls-mono-lg);
-  color: var(--paper-dim) !important;
+  color: var(--paper-dim);
   animation: marquee var(--d-marquee) linear infinite;
   padding-left: 100%;
 }
-.ticker .ticker-track,
-.ticker .ticker-track * {
-  color: var(--paper-dim);
-}
-.ticker .ticker-track .m { color: var(--paper-mute) !important; margin: 0 var(--s-3); }
-.ticker .ticker-track .w { color: var(--paper) !important; }
+/* Three accent bands inside the ticker — keep the colour vocabulary
+   consistent with the rest of the site:
+     .d  = domain words      → waterline (sky blue)
+     .l  = live / current    → signal (amber)
+     .w  = emphasised phrase → paper (bright cream)
+     .m  = separators        → paper-mute (quiet) */
+.ticker .ticker-track .d { color: var(--waterline); }
+.ticker .ticker-track .l { color: var(--signal); }
+.ticker .ticker-track .w { color: var(--paper); }
+.ticker .ticker-track .m { color: var(--paper-mute); margin: 0 var(--s-3); }
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-100%); }

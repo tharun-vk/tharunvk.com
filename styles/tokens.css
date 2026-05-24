@@ -24,8 +24,8 @@
 
   /* ----- FOREGROUND / TEXT ----- */
   --paper:      #e1e2e7;  /* primary text, headlines  — was #e8e4d6 */
-  --paper-dim:  #bec8ce;  /* secondary text            — was #a8a59a */
-  --paper-mute: #94a3b8;  /* labels, metadata          — was #6c6a63 */
+  --paper-dim:  #c4c0b5;  /* secondary text            — warmer neutral, was #bec8ce */
+  --paper-mute: #8a8680;  /* labels, metadata          — warmer neutral, was #94a3b8 */
 
   /* ----- ACCENTS ----- */
   --waterline:    #7bd1fa;   /* primary accent (sky blue) — was #4ea3c4 */
