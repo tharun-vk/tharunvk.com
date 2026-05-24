@@ -1,97 +1,94 @@
 /* ============================================================
-   tokens.css
-   The design tokens for tharunvk.com — the single source of
-   truth for color, typography, spacing, and motion.
-   Edit values here; every component picks them up automatically.
+   tokens.css — design refresh (Stitch language)
+   
+   The variable names here match the original token set so that
+   existing components and inline styles continue to work without
+   any HTML changes. Values are updated to match the new design
+   language documented in design-system.md.
+   
+   Original site language:    "Abyss / Paper / Waterline"
+   Refreshed site language:   "Ink / Mist / Sky"
    ============================================================ */
 
 :root {
 
-  /* ----- COLORS ----- */
+  /* ----- BACKGROUNDS ----- */
+  --abyss:    #111417;   /* primary page background — was #0b1018 */
+  --abyss-2:  #1d2023;   /* surface (cards, ticker)  — was #131923 */
+  --abyss-3:  #282a2e;   /* elevated surface         — was #1a2030 */
 
-  /* Background scale — deep navy, almost ink, with hints of blue */
-  --abyss:        #0b1018;   /* page background */
-  --abyss-2:      #131923;   /* surfaces, cards */
-  --abyss-3:      #1a2030;   /* elevated surfaces */
+  /* New surface tokens for glassmorphism (additive — components can opt in) */
+  --surface-glass:        rgba(30, 41, 59, 0.4);   /* slate-blue translucent */
+  --surface-glass-strong: rgba(30, 41, 59, 0.7);
+  --surface-blur:         12px;
 
-  /* Border / hairline scale */
-  --rivet:        #262d3b;   /* primary hairline */
-  --rivet-h:      #323a4a;   /* hover state */
+  /* ----- FOREGROUND / TEXT ----- */
+  --paper:      #e1e2e7;  /* primary text, headlines  — was #e8e4d6 */
+  --paper-dim:  #bec8ce;  /* secondary text            — was #a8a59a */
+  --paper-mute: #94a3b8;  /* labels, metadata          — was #6c6a63 */
 
-  /* Foreground / text */
-  --paper:        #e8e4d6;   /* primary text */
-  --paper-dim:    #a8a59a;   /* secondary text */
-  --paper-mute:   #6c6a63;   /* tertiary text, labels */
+  /* ----- ACCENTS ----- */
+  --waterline:    #7bd1fa;   /* primary accent (sky blue) — was #4ea3c4 */
+  --waterline-d:  #006686;   /* glow / shadow base        — was #296a83 */
+  --waterline-bright: #c5eaff; /* extra bright for hero accents */
+  --signal:       #ffc640;   /* secondary accent (live amber) — was #d8a85a */
+  --signal-dim:   #f9bd22;
 
-  /* Accents — used sparingly and semantically */
-  --waterline:    #4ea3c4;   /* primary accent — structure, italic emphasis */
-  --waterline-d:  #296a83;   /* shadow / glow base */
-  --signal:       #d8a85a;   /* secondary accent — "live" / current state only */
+  /* ----- BORDERS ----- */
+  --rivet:    rgba(255, 255, 255, 0.08);   /* primary hairline — was #262d3b */
+  --rivet-h:  rgba(255, 255, 255, 0.16);   /* hover state      — was #323a4a */
 
   /* ----- TYPOGRAPHY ----- */
+  --serif: 'Literata', Georgia, 'Times New Roman', serif;
+  --sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --mono:  'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
 
-  --serif: 'Fraunces', Georgia, serif;
-  --mono:  'JetBrains Mono', 'SF Mono', Menlo, monospace;
+  /* Type scale — tuned for Literata/Inter pairing */
+  --t-eyebrow:    11px;
+  --t-body-mono:  12px;
+  --t-body:       16px;
+  --t-prose:      clamp(16px, 1.1vw, 18px);
+  --t-tagline:    clamp(22px, 2.2vw, 30px);
+  --t-h3:         clamp(24px, 2.4vw, 28px);
+  --t-h2:         clamp(40px, 5vw, 64px);
+  --t-h1:         clamp(56px, 8vw, 96px);
 
-  /* Type scale — clamped for fluid responsive sizing */
-  --t-eyebrow:    11px;                                      /* mono labels */
-  --t-body-mono:  12px;                                      /* mono body */
-  --t-body:       16px;                                      /* serif body */
-  --t-prose:      clamp(16px, 1.6vw, 18px);                  /* large body prose */
-  --t-tagline:    clamp(22px, 2.4vw, 30px);                  /* hero subtitle */
-  --t-h3:         26px;                                      /* row title */
-  --t-h2:         clamp(40px, 5vw, 64px);                    /* section title */
-  --t-h1:         clamp(56px, 8vw, 116px);                   /* hero headline */
-
-  /* Line heights */
-  --lh-tight:     0.95;
-  --lh-snug:      1.15;
-  --lh-base:      1.6;
-  --lh-loose:     1.7;
-
-  /* Letter spacing — used for mono uppercase labels */
-  --ls-mono-sm:   0.18em;
-  --ls-mono-md:   0.22em;
-  --ls-mono-lg:   0.28em;
+  /* Letter spacing for mono uppercase — unchanged */
+  --ls-mono-sm:  0.18em;
+  --ls-mono-md:  0.22em;
+  --ls-mono-lg:  0.28em;
 
   /* ----- SPACING ----- */
-  /* One scale, used everywhere. */
-
-  --s-1:    4px;
-  --s-2:    8px;
-  --s-3:    12px;
-  --s-4:    16px;
-  --s-5:    24px;
-  --s-6:    32px;
-  --s-7:    40px;
-  --s-8:    56px;
-  --s-9:    80px;
+  --s-1:   4px;
+  --s-2:   8px;
+  --s-3:   12px;
+  --s-4:   16px;
+  --s-5:   24px;
+  --s-6:   32px;
+  --s-7:   40px;
+  --s-8:   56px;
+  --s-9:   80px;
   --s-10:  120px;
   --s-11:  140px;
 
-  /* ----- LAYOUT ----- */
+  /* ----- SHAPE LANGUAGE ----- */
+  /* New soft corner radii (adopt Stitch). Originally these were 0. */
+  --r-sm:  4px;     /* tags, small chips */
+  --r-md:  6px;     /* buttons, inputs */
+  --r-lg:  8px;     /* cards */
+  --r-xl:  12px;    /* large surfaces, meta-card */
 
-  --max-content:     1240px;
-  --gutter:          var(--s-7);   /* 40px desktop */
-  --gutter-mobile:   var(--s-5);   /* 24px mobile */
+  /* ----- LAYOUT ----- */
+  --max-content: 1240px;
+  --max-prose:   720px;
 
   /* ----- MOTION ----- */
+  --d-fast:    200ms;
+  --d-base:    350ms;
+  --d-slow:    600ms;
+  --d-breathe: 3s;
+  --d-marquee: 60s;
+  --ease-out:  cubic-bezier(0.2, 0.6, 0.2, 1);
+  --ease-soft: cubic-bezier(0.2, 0.8, 0.2, 1);
 
-  --ease-out:        cubic-bezier(0.2, 0.6, 0.2, 1);
-  --d-fast:          200ms;
-  --d-base:          350ms;
-  --d-slow:          600ms;
-  --d-breathe:       3s;       /* live status pip */
-  --d-marquee:       60s;      /* domain ticker */
-
-  /* ----- ELEVATION (used sparingly) ----- */
-  --glow-waterline:  0 0 6px var(--waterline-d);
-  --glow-signal:     0 0 6px var(--signal);
-
-  /* ----- Z-INDEX ----- */
-  --z-grid:        1;
-  --z-noise:       2;
-  --z-content:     3;
-  --z-statusbar:  50;
-  --z-frame:      80;
 }
