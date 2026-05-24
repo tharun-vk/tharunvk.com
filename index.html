@@ -21,7 +21,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/styles/tokens.css" />
@@ -49,15 +49,17 @@
 
 <div class="ticker">
   <div class="ticker-track">
-    Healthcare <span class="m">·</span> Automobile <span class="m">·</span> Investment Banking <span class="m">·</span> Consulting
+    <span class="d">Healthcare</span> <span class="m">·</span> <span class="d">Automobile</span> <span class="m">·</span> <span class="d">Investment Banking</span> <span class="m">·</span> <span class="d">Consulting</span>
     <span class="m">  //  </span>
     <span class="w">12+ years across enterprise SaaS and data products</span>
     <span class="m">  //  </span>
-    Currently shipping risk analytics at Reveleer
+    <span class="l">Currently shipping risk analytics at Reveleer</span>
     <span class="m">  //  </span>
-    Healthcare <span class="m">·</span> Automobile <span class="m">·</span> Investment Banking <span class="m">·</span> Consulting
+    <span class="d">Healthcare</span> <span class="m">·</span> <span class="d">Automobile</span> <span class="m">·</span> <span class="d">Investment Banking</span> <span class="m">·</span> <span class="d">Consulting</span>
     <span class="m">  //  </span>
     <span class="w">12+ years across enterprise SaaS and data products</span>
+    <span class="m">  //  </span>
+    <span class="l">Currently shipping risk analytics at Reveleer</span>
   </div>
 </div>
 
@@ -77,6 +79,7 @@
 
   <!-- HERO -->
   <section class="hero">
+    <canvas id="particleCanvas" aria-hidden="true"></canvas>
     <div>
       <div class="eyebrow">Senior Product Manager · 12+ years</div>
       <h1>Simple on the surface. <em>Complex underneath.</em></h1>
@@ -408,6 +411,8 @@
     <span>Rev 2026.05 · Chennai</span>
   </div>
 </footer>
+
+<script src="/scripts/particles.js" defer></script>
 
 </body>
 </html>

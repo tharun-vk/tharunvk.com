@@ -8,24 +8,39 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="/styles/tokens.css" />
   <link rel="stylesheet" href="/styles/base.css" />
   <link rel="stylesheet" href="/styles/components.css" />
 
   <style>
-    /* Minimal local additions for the work index hero — matches the existing
-       hero pattern from index.html but single-column. */
     .work-index-hero {
       max-width: var(--max-content, 1240px);
       margin: 0 auto;
       padding: var(--s-11) var(--s-7) var(--s-7);
     }
-    .work-index-hero .eyebrow { margin-bottom: var(--s-5); }
+    .work-index-hero .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-3);
+      font-family: var(--mono);
+      font-size: var(--t-eyebrow);
+      text-transform: uppercase;
+      letter-spacing: var(--ls-mono-md);
+      color: var(--waterline);
+      margin-bottom: var(--s-5);
+    }
+    .work-index-hero .eyebrow::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--waterline-bright);
+      opacity: 0.5;
+    }
     .work-index-hero h1 {
       font-family: var(--serif);
-      font-weight: 400;
+      font-weight: 700;
       font-size: clamp(48px, 8vw, 96px);
       line-height: 0.95;
       letter-spacing: -0.025em;
@@ -35,29 +50,22 @@
     .work-index-hero h1 em {
       font-style: italic;
       color: var(--waterline);
-      font-weight: 300;
+      font-weight: 400;
     }
     .work-index-hero .tagline {
-      font-family: var(--serif);
-      font-style: italic;
-      font-weight: 300;
-      font-size: var(--t-tagline);
+      font-family: var(--sans);
+      font-size: clamp(18px, 1.6vw, 22px);
       color: var(--paper-dim);
-      line-height: 1.4;
+      line-height: 1.5;
       max-width: 60ch;
     }
     .work-index-hero .tagline em { color: var(--paper); font-style: italic; }
 
-    /* Make card→case-study links blend seamlessly */
     .work-card-link {
       display: block;
       text-decoration: none;
       color: inherit;
     }
-    .work-card-link:hover .work-card { /* nudge a card-level hover on link wrap */
-      border-color: var(--rivet-h, #323a4a);
-    }
-    /* Small "read case study" footer label on linked cards */
     .work-card .read-more {
       margin-top: var(--s-4);
       padding-top: var(--s-3);
@@ -119,11 +127,9 @@
     <p class="tagline">Products I've owned end-to-end, with the outcomes they moved. The <em>BNP corporate actions</em> story is up first, the others are landing.</p>
   </section>
 
-  <!-- Card grid — reuses the home page work-card pattern -->
   <section class="work" style="padding-top: 0;">
     <div class="work-grid">
 
-      <!-- LIVE / IN FLIGHT — Reveleer -->
       <article class="work-card live">
         <div class="meta">
           <span class="num">№ 001</span>
@@ -143,7 +149,6 @@
         <div class="in-writing">Case study · landing soon</div>
       </article>
 
-      <!-- Ford -->
       <article class="work-card">
         <div class="meta">
           <span class="num">№ 002</span>
@@ -160,7 +165,6 @@
         <div class="in-writing">Case study · in writing</div>
       </article>
 
-      <!-- BNP — THE FULL CASE STUDY LINK -->
       <a href="/work/bnp-corporate-actions.html" class="work-card-link">
         <article class="work-card">
           <div class="meta">
@@ -179,7 +183,6 @@
         </article>
       </a>
 
-      <!-- Barclays -->
       <article class="work-card">
         <div class="meta">
           <span class="num">№ 004</span>
