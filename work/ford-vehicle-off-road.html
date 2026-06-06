@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vehicle Off-Road Command Center at Ford — Tharun VK</title>
+  <meta name="description" content="Building a platform for Ford's global service operations. From a leadership dashboard POC to a workspace serving the whole vehicle off-road domain across every market Ford sells in." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/styles/tokens.css" />
+  <link rel="stylesheet" href="/styles/base.css" />
+  <link rel="stylesheet" href="/styles/components.css" />
+
+  <style>
+    /* Case-study-specific layout patterns.
+       These extend the design system; nothing here overrides existing tokens. */
+
+    .case-hero {
+      max-width: var(--max-content, 1240px);
+      margin: 0 auto;
+      padding: var(--s-11) var(--s-7) var(--s-8);
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(280px, 1fr);
+      gap: var(--s-8);
+      align-items: start;
+    }
+    .case-hero .lead .eyebrow { margin-bottom: var(--s-5); }
+    .case-hero .lead h1 {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: clamp(44px, 7vw, 76px);
+      line-height: 0.98;
+      letter-spacing: -0.025em;
+      color: var(--paper);
+      margin-bottom: var(--s-5);
+    }
+    .case-hero .lead h1 em {
+      font-style: italic;
+      color: var(--waterline);
+      font-weight: 400;
+    }
+    .case-hero .lead .subtitle {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: var(--t-tagline);
+      color: var(--paper-dim);
+      line-height: 1.4;
+      max-width: 50ch;
+    }
+
+    .metric-strip {
+      max-width: var(--max-content, 1240px);
+      margin: 0 auto;
+      padding: var(--s-6) var(--s-7);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-5);
+      border-top: 1px solid var(--rivet);
+      border-bottom: 1px solid var(--rivet);
+    }
+    .metric-strip .metric {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-2);
+    }
+    .metric-strip .metric .big {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--waterline);
+    }
+    .metric-strip .metric .lbl {
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-mono-md);
+      color: var(--paper-mute);
+    }
+    .metric-strip .metric .delta {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--paper-dim);
+      letter-spacing: 0.05em;
+    }
+
+    .case-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: var(--s-10) var(--s-7) var(--s-9);
+    }
+    .case-section {
+      margin-bottom: var(--s-9);
+    }
+    .case-section:last-child { margin-bottom: 0; }
+    .case-section .sec-mark {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-mono-md);
+      color: var(--paper-mute);
+      margin-bottom: var(--s-4);
+      display: flex;
+      align-items: baseline;
+      gap: var(--s-3);
+    }
+    .case-section .sec-mark .num { color: var(--paper-mute); }
+    .case-section .sec-mark .ttl { color: var(--waterline); }
+    .case-section .sec-mark .ttl em { font-style: italic; }
+    .case-section p {
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--paper-dim);
+      margin-bottom: var(--s-4);
+    }
+    .case-section p:last-child { margin-bottom: 0; }
+    .case-section p em {
+      font-style: italic;
+      color: var(--paper);
+    }
+    .case-section p .accent {
+      color: var(--waterline);
+      font-style: italic;
+    }
+
+    .reflection {
+      max-width: 720px;
+      margin: 0 auto var(--s-9);
+      padding: var(--s-6) var(--s-7);
+      border-top: 1px dashed var(--rivet);
+      border-bottom: 1px dashed var(--rivet);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--s-5);
+    }
+    .reflection .item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: var(--s-5);
+      align-items: baseline;
+    }
+    .reflection .item .label {
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-mono-md);
+      color: var(--paper-mute);
+    }
+    .reflection .item .text {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.55;
+      color: var(--paper-dim);
+    }
+
+    .case-nav-back {
+      max-width: var(--max-content, 1240px);
+      margin: 0 auto;
+      padding: var(--s-5) var(--s-7) 0;
+    }
+    .case-nav-back a {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-mono-md);
+      color: var(--paper-mute);
+      text-decoration: none;
+      transition: color var(--d-base, 350ms);
+    }
+    .case-nav-back a:hover { color: var(--waterline); }
+
+    @media (max-width: 880px) {
+      .case-hero {
+        grid-template-columns: 1fr;
+        padding: var(--s-9) var(--s-5) var(--s-7);
+        gap: var(--s-6);
+      }
+      .metric-strip {
+        grid-template-columns: 1fr;
+        gap: var(--s-5);
+        padding: var(--s-5);
+      }
+      .case-body { padding: var(--s-8) var(--s-5); }
+      .reflection { padding: var(--s-5); }
+      .reflection .item { grid-template-columns: 1fr; gap: var(--s-2); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="frame">
+  <span class="c tl"></span><span class="c tr"></span>
+  <span class="c bl"></span><span class="c br"></span>
+</div>
+
+<div class="statusbar">
+  <div class="left">
+    <span class="live"><span class="pip"></span>Currently · Reveleer</span>
+    <span>Sr Product Manager</span>
+  </div>
+  <div class="center">TVK · Work / Case 002</div>
+  <div class="right">
+    <span class="clk">Chennai, IN · IST</span>
+    <span>Rev 2026.05</span>
+  </div>
+</div>
+
+<nav class="primary">
+  <div class="brand"><a href="/" style="display:inline-flex;align-items:center;gap:14px;"><span class="brand-glyph"></span>Tharun <em>VK</em></a></div>
+  <ul>
+    <li><a href="/">Index</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/experience.html">Experience</a></li>
+    <li><a href="/work.html" class="active">Work</a></li>
+    <li><a href="/writing.html">Writing</a></li>
+  </ul>
+  <a href="mailto:ktharun1993@gmail.com" class="nav-cta">Get in touch <em>↗</em></a>
+</nav>
+
+<main>
+
+  <div class="case-nav-back">
+    <a href="/work.html">← All work</a>
+  </div>
+
+  <!-- HERO + META CARD -->
+  <section class="case-hero">
+    <div class="lead">
+      <div class="eyebrow">§ Case 002 · 2024 — 2025 · Automobile</div>
+      <h1>Vehicle Off-Road Command Center at <em>Ford</em></h1>
+      <p class="subtitle">A modest POC for senior leadership grew into a global platform serving the entire vehicle off-road domain, absorbing adjacent third-party workflow applications module by module.</p>
+    </div>
+
+    <aside class="meta-card">
+      <div class="file-id">
+        <span>FILE · TVK / CASE / 002</span>
+        <span class="pip"></span>
+      </div>
+      <div class="row">
+        <span class="k">Product</span>
+        <span class="v">Command Center<small>Global platform · multi-module</small></span>
+      </div>
+      <div class="row">
+        <span class="k">Domain</span>
+        <span class="v accent">Automobile<small>Service Operations</small></span>
+      </div>
+      <div class="row">
+        <span class="k">Role</span>
+        <span class="v">Platform PM<small>Sr PM → Platform PM · E2E owner</small></span>
+      </div>
+      <div class="row">
+        <span class="k">Years</span>
+        <span class="v">2024 — 2025<small>POC Nov 2023 – Jan 2024</small></span>
+      </div>
+      <div class="row">
+        <span class="k">Team</span>
+        <span class="v">30+<small>Ford eng + arch · 2 vendor pods · QA · BSMEs · design</small></span>
+      </div>
+    </aside>
+  </section>
+
+  <!-- METRIC STRIP -->
+  <section class="metric-strip">
+    <div class="metric">
+      <div class="big">12<em>%</em></div>
+      <div class="lbl">Repair cycle reduction</div>
+      <div class="delta">Vehicle uptime · the North Star</div>
+    </div>
+    <div class="metric">
+      <div class="big">18<em>%</em></div>
+      <div class="lbl">QoQ adoption growth</div>
+      <div class="delta">Post-pilot · compounding</div>
+    </div>
+    <div class="metric">
+      <div class="big">+16<em>%</em></div>
+      <div class="lbl">CSAT lift</div>
+      <div class="delta">At mid-build feature parity</div>
+    </div>
+  </section>
+
+  <!-- PROSE BODY -->
+  <article class="case-body">
+
+    <div class="case-section">
+      <div class="sec-mark"><span class="num">§ 01</span><span class="ttl"><em>Context</em></span></div>
+      <p>Ford's service operations had a problem with how long vehicles sat off-road, and no central view of it. Repair orders sat across systems. Status was scattered, ownership was unclear, and the senior leadership running service operations across every market Ford sells in — North America, Europe, APAC — had no shared lens on how their portfolios were performing. The original brief was modest. A data-visualisation dashboard for business leaders and portfolio managers, summarising end-of-day status of the population they were responsible for.</p>
+    </div>
+
+    <div class="case-section">
+      <div class="sec-mark"><span class="num">§ 02</span><span class="ttl"><em>Constraints</em></span></div>
+      <p>The product needed clean data the team didn't own, with critical feeds across upstream and downstream systems, owned by other product teams whose roadmaps and priorities had to be negotiated into ours. The second constraint was the difficulty of letting go. Command Center was meant to replace a set of existing third-party workflow applications that had poor UX and structural backend limits, and leadership had set the direction to move off them on cost and value grounds. Even with that direction in place, individual teams found it hard to release the tools they had built their workflows around. Decisions agreed on one month would get re-litigated the next.</p>
+    </div>
+
+    <div class="case-section">
+      <div class="sec-mark"><span class="num">§ 03</span><span class="ttl">The <em>call</em></span></div>
+      <p>The obvious path after the POC was to keep it as a dashboard. Add a few more metrics, expand the user list, polish the UI, ship a v2. Instead, I argued for something different. The same product that gave leaders their bird's-eye view should also give the operators responsible for individual repair orders the ability to drill in, see ownership, leave comments, follow status, and act inline. A dashboard for leaders, a workflow tool for everyone else, but one product, one experience, one source of truth.</p>
+      <p>The second call was how to build it. The full vision was eight to twelve months of work. Most enterprise teams would have planned a single release at the end of that runway. I argued for splitting the requirements into modules that could each ship as releasable software, sprint by sprint. Core modules first, then enhancements and new modules quarter over quarter. The reasoning was that no one would wait twelve months without losing faith in the product, and the feedback we got from each shipped module made the next one better. It also meant the business saw ROI iteratively, not on a single distant date.</p>
+      <p>The third call followed from the first two. Once the platform existed and worked, the cost of running multiple separate third-party applications became harder to justify. We started absorbing those applications into Command Center as modules, lift-and-shift with workflows redesigned and the experience modernised. <em>The platform was no longer just the product. It became the workspace.</em></p>
+    </div>
+
+    <div class="case-section">
+      <div class="sec-mark"><span class="num">§ 04</span><span class="ttl">What <em>almost broke</em></span></div>
+      <p>The upstream data was the recurring risk. Critical feeds were owned by teams whose roadmaps didn't have our milestones on them, and slippage often surfaced late, sometimes not surfaced at all until I asked. I built a habit of proactive check-ins, and when something was off-track, the response was a layered one: negotiate reprioritisation, lend resources where it helped, or design the release with placeholders that absorbed the data cleanly when it landed. <em>The risk was constant. The response was a system, not a save.</em></p>
+    </div>
+
+    <div class="case-section">
+      <div class="sec-mark"><span class="num">§ 05</span><span class="ttl"><em>Outcome</em></span></div>
+      <p>Repair cycle time dropped 12%. That translates into millions of dollars in saved cost and increased revenue when you account for fleet-customer economics, retention, brand trust, and downstream service costs. Monthly active users grew 18% quarter on quarter after the pilot, compounding across each new module released. CSAT lifted 16%, measured at roughly 40-50% feature completion. Users were rating the product highly before it was finished.</p>
+      <p>The outcome that wasn't in the pitch was the way adoption happened. Other teams started reaching out asking for access without being pitched to. The modular release strategy paid off in a way the original plan hadn't promised. <em>Users felt the value, and the platform's adoption became something that happened to us rather than something we drove.</em></p>
+    </div>
+
+  </article>
+
+  <!-- FOOTER REFLECTION -->
+  <section class="reflection">
+    <div class="item">
+      <div class="label">What I'd do differently</div>
+      <div class="text">Set the upstream contract earlier. The proactive check-ins worked, but they were a workaround for a coordination model the project didn't have at the start. Agreeing escalation thresholds and check-in cadences with upstream teams upfront would have caught slippage before it became a milestone problem.</div>
+    </div>
+    <div class="item">
+      <div class="label">What this taught me</div>
+      <div class="text">Design releases that don't depend on their full dependency set. Contingency-led architecture, placeholders that absorb data cleanly when it lands, turned a chronic risk into an operating discipline. It's now how I build for any platform that lives downstream of other teams.</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div>© 2026 · Tharun VK · <a href="mailto:ktharun1993@gmail.com">ktharun1993@gmail.com</a></div>
+  <div class="right">
+    <a href="https://www.linkedin.com/in/tharunvk/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <span>Rev 2026.05 · Chennai</span>
+  </div>
+</footer>
+
+</body>
+</html>
