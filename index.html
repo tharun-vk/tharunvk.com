@@ -21,12 +21,31 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/styles/tokens.css" />
   <link rel="stylesheet" href="/styles/base.css" />
   <link rel="stylesheet" href="/styles/components.css" />
+
+  <style>
+    .exp-more {
+      margin-top: var(--s-6);
+      padding-top: var(--s-5);
+      border-top: 1px solid var(--rivet);
+      text-align: right;
+    }
+    .exp-more a {
+      font-family: var(--mono);
+      font-size: var(--t-eyebrow, 11px);
+      text-transform: uppercase;
+      letter-spacing: var(--ls-mono-md);
+      color: var(--waterline);
+      text-decoration: none;
+      transition: color var(--d-base, 350ms);
+    }
+    .exp-more a:hover { color: var(--paper); }
+  </style>
 </head>
 <body>
 
@@ -49,17 +68,15 @@
 
 <div class="ticker">
   <div class="ticker-track">
-    <span class="d">Healthcare</span> <span class="m">·</span> <span class="d">Automobile</span> <span class="m">·</span> <span class="d">Investment Banking</span> <span class="m">·</span> <span class="d">Consulting</span>
+    Healthcare <span class="m">·</span> Automobile <span class="m">·</span> Investment Banking <span class="m">·</span> Consulting
     <span class="m">  //  </span>
     <span class="w">12+ years across enterprise SaaS and data products</span>
     <span class="m">  //  </span>
-    <span class="l">Currently shipping risk analytics at Reveleer</span>
+    Currently shipping risk analytics at Reveleer
     <span class="m">  //  </span>
-    <span class="d">Healthcare</span> <span class="m">·</span> <span class="d">Automobile</span> <span class="m">·</span> <span class="d">Investment Banking</span> <span class="m">·</span> <span class="d">Consulting</span>
+    Healthcare <span class="m">·</span> Automobile <span class="m">·</span> Investment Banking <span class="m">·</span> Consulting
     <span class="m">  //  </span>
     <span class="w">12+ years across enterprise SaaS and data products</span>
-    <span class="m">  //  </span>
-    <span class="l">Currently shipping risk analytics at Reveleer</span>
   </div>
 </div>
 
@@ -79,7 +96,6 @@
 
   <!-- HERO -->
   <section class="hero">
-    <canvas id="particleCanvas" aria-hidden="true"></canvas>
     <div>
       <div class="eyebrow">Senior Product Manager · 12+ years</div>
       <h1>Simple on the surface. <em>Complex underneath.</em></h1>
@@ -120,12 +136,8 @@
     <div class="meta">Career · 2013 → present</div>
   </div>
 
-  <div class="placeholder-ribbon">
-    <span class="tag">⚑ Draft · per-role detail still landing</span>
-  </div>
-
   <section class="experience">
-    <p class="exp-intro">Twelve years, four domains. The constant across each station: <em>showing up proactive, taking on more than the role asks for, learning the domain faster, and delivering ahead of schedule</em>. The promotions followed from that — five of them, each visibly faster than the cohort norm. The arc, station by station.</p>
+    <p class="exp-intro">Twelve years, four domains. The constant across each station: <em>showing up proactive, taking on more than the role asks for, learning the domain faster, and delivering ahead of schedule</em>. The promotions followed from that — five of them, each visibly faster than the cohort norm. The three most recent stations below; the <a href="/experience.html" style="color:var(--waterline);">full timeline</a> runs back to 2013.</p>
 
     <div class="exp-list">
 
@@ -202,104 +214,10 @@
         <div class="status"><span class="v">Shipped</span></div>
       </div>
 
-      <div class="exp-row">
-        <div class="yr">Oct 2018 — Aug 2021</div>
-        <div class="body">
-          <h3>BA → Senior BA / Product Owner · <em>BNP Paribas</em></h3>
-          <div class="role">Investment Banking · Global Markets, Corporate Actions</div>
-          <p class="note">Owned the product roadmap for global Corporate Actions — institutional prime brokerage, trading-desk workflows — and led the Deutsche Bank PB acquisition integration end-to-end.</p>
-          <div class="promo">
-            <div>
-              <span class="label">Time to promotion</span>
-              <span class="val fast">~17 months</span>
-            </div>
-            <div>
-              <span class="label">Typical timing</span>
-              <span class="val typical">3 – 4 years</span>
-            </div>
-          </div>
-        </div>
-        <div class="marker">
-          <span class="badge fast">~2× faster</span>
-          <div class="note">Detail to be added.</div>
-        </div>
-        <div class="status"><span class="v">Shipped</span></div>
-      </div>
+    </div>
 
-      <div class="exp-row">
-        <div class="yr">2017 — 2018</div>
-        <div class="body">
-          <h3>Senior Analyst → Asst. Manager · <em>Barclays</em></h3>
-          <div class="role">Investment Banking · Regulatory Risk Reporting · Digital Transformation</div>
-          <p class="note">Owned the Digital Transformation Project for Barclays' Risk, Finance, and Treasury functions — automating ten-plus reporting processes and rebuilding the credit-risk dashboards used across global compliance.</p>
-          <div class="promo">
-            <div>
-              <span class="label">Time to promotion</span>
-              <span class="val fast">1.5 years</span>
-            </div>
-            <div>
-              <span class="label">Typical timing</span>
-              <span class="val typical">3 – 4 years</span>
-            </div>
-          </div>
-        </div>
-        <div class="marker">
-          <span class="badge fast">~2.5× faster</span>
-          <span class="badge young">Youngest in role</span>
-          <div class="note">Detail to be added.</div>
-        </div>
-        <div class="status"><span class="v">Shipped</span></div>
-      </div>
-
-      <div class="exp-row">
-        <div class="yr">2015 — 2017</div>
-        <div class="body">
-          <h3>Fixed Income Analyst → Senior Analyst (MIS) · <em>Barclays</em></h3>
-          <div class="role">Investment Banking · Middle Office</div>
-          <p class="note">Fixed income middle-office work — trade lifecycle, risk metrics, MIS reporting feeding daily desk-level decisions across the global markets business.</p>
-          <div class="promo">
-            <div>
-              <span class="label">Time to promotion</span>
-              <span class="val fast">8 months</span>
-            </div>
-            <div>
-              <span class="label">Typical timing</span>
-              <span class="val typical">3 – 4 years</span>
-            </div>
-          </div>
-        </div>
-        <div class="marker">
-          <span class="badge fast">~5× faster</span>
-          <div class="note">Detail to be added.</div>
-        </div>
-        <div class="status"><span class="v">Shipped</span></div>
-      </div>
-
-      <div class="exp-row">
-        <div class="yr">2013 — 2015</div>
-        <div class="body">
-          <h3>Analyst → Advanced Analyst · <em>EY</em></h3>
-          <div class="role">Consulting · Tax Advisory · HNI / CXO Clients</div>
-          <p class="note">Tax advisory work for high-net-worth individuals and CXO clients — reviewed 250+ complex returns at full compliance, and built a faster client-data-collection process that earned EY's Global Extra Miler Award.</p>
-          <div class="promo">
-            <div>
-              <span class="label">Time to promotion</span>
-              <span class="val fast">6 months</span>
-            </div>
-            <div>
-              <span class="label">Typical timing</span>
-              <span class="val typical">2 – 3 years</span>
-            </div>
-          </div>
-        </div>
-        <div class="marker">
-          <span class="badge fast">Fastest in cohort</span>
-          <span class="badge young">Global Extra Miler</span>
-          <div class="note">Detail to be added.</div>
-        </div>
-        <div class="status"><span class="v">Shipped</span></div>
-      </div>
-
+    <div class="exp-more">
+      <a href="/experience.html">See the full timeline →</a>
     </div>
   </section>
 
@@ -311,11 +229,11 @@
   </div>
 
   <div class="placeholder-ribbon">
-    <span class="tag">⚑ BNP and Ford case studies live · two more in writing</span>
+    <span class="tag">⚑ Placeholder · case studies in writing</span>
   </div>
 
   <section class="work">
-    <p class="work-intro">Experience above is <em>where</em>. The selection below is <em>what</em> — products and product lines I've owned, with the outcomes they moved. The <em>BNP</em> and <em>Ford</em> stories are up; the others are landing.</p>
+    <p class="work-intro">Experience above is <em>where</em>. The selection below is <em>what</em> — products and product lines I've owned, with the outcomes they moved. Full case studies will live behind each card; for now, the highlights.</p>
 
     <div class="work-grid">
 
@@ -325,7 +243,7 @@
           <span class="live-tag">Live · in flight</span>
         </div>
         <h3>Risk Analytics at <em>Reveleer</em></h3>
-        <div class="role">Senior PM · End-to-end owner · since Jan 2026</div>
+        <div class="role">Senior PM · End-to-end owner · 2026 — present</div>
         <p class="desc">A healthcare risk analytics product. Owning the strategy, the feature design, the solutioning, and the full release cadence — from PRD through ship and into the field.</p>
         <div class="scope">
           <span class="scope-item">Product strategy</span>
@@ -337,41 +255,35 @@
         </div>
       </article>
 
-      <a href="/work/ford-vehicle-off-road.html" style="display:block;text-decoration:none;color:inherit;">
-        <article class="work-card">
-          <div class="meta">
-            <span class="num">№ 002</span>
-            <span class="yr">2023 — 2025</span>
-          </div>
-          <h3>Vehicle Off-Road at <em>Ford</em></h3>
-          <div class="role">Senior PM → Platform PM</div>
-          <p class="desc">A POC for senior leadership grew into a global platform serving the entire vehicle off-road domain, absorbing adjacent third-party workflow applications module by module.</p>
-          <div class="metrics">
-            <div class="metric"><div class="big">12%</div><div class="lbl">repair cycle ↓</div></div>
-            <div class="metric"><div class="big">18%</div><div class="lbl">QoQ adoption ↑</div></div>
-            <div class="metric"><div class="big">16%</div><div class="lbl">CSAT lift</div></div>
-          </div>
-          <div style="margin-top:var(--s-4);padding-top:var(--s-3);border-top:1px dashed var(--rivet);font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:var(--ls-mono-md);color:var(--waterline);">Read case study →</div>
-        </article>
-      </a>
+      <article class="work-card">
+        <div class="meta">
+          <span class="num">№ 002</span>
+          <span class="yr">2023 — 2025</span>
+        </div>
+        <h3>Vehicle Off-Road at <em>Ford</em></h3>
+        <div class="role">Senior PM → Platform PM</div>
+        <p class="desc">Command Center and Data Services — two products serving Ford's global service operations, plus a platform expansion that absorbed adjacent projects. Led a 30+ cross-functional team and shipped feature waves against real field pain points.</p>
+        <div class="metrics">
+          <div class="metric"><div class="big">12%</div><div class="lbl">repair cycle ↓</div></div>
+          <div class="metric"><div class="big">18%</div><div class="lbl">QoQ adoption ↑</div></div>
+          <div class="metric"><div class="big">16%</div><div class="lbl">CSAT lift</div></div>
+        </div>
+      </article>
 
-      <a href="/work/bnp-corporate-actions.html" style="display:block;text-decoration:none;color:inherit;">
-        <article class="work-card">
-          <div class="meta">
-            <span class="num">№ 003</span>
-            <span class="yr">2018 — 2021</span>
-          </div>
-          <h3>Corporate Actions at <em>BNP Paribas</em></h3>
-          <div class="role">Product Owner · Global Markets</div>
-          <p class="desc">Owned the product roadmap for the global Corporate Actions product, serving internal trading desks and institutional prime brokerage. Re-architected the processing core around a configurable rule engine.</p>
-          <div class="metrics">
-            <div class="metric"><div class="big">38→82%</div><div class="lbl">STP rate</div></div>
-            <div class="metric"><div class="big">+8</div><div class="lbl">pts CSAT</div></div>
-            <div class="metric"><div class="big">~1 FTE</div><div class="lbl">ops reclaimed</div></div>
-          </div>
-          <div style="margin-top:var(--s-4);padding-top:var(--s-3);border-top:1px dashed var(--rivet);font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:var(--ls-mono-md);color:var(--waterline);">Read case study →</div>
-        </article>
-      </a>
+      <article class="work-card">
+        <div class="meta">
+          <span class="num">№ 003</span>
+          <span class="yr">2018 — 2021</span>
+        </div>
+        <h3>Corporate Actions at <em>BNP Paribas</em></h3>
+        <div class="role">Product Owner · Global Markets</div>
+        <p class="desc">Owned the product roadmap for the global Corporate Actions product, serving internal trading desks and institutional prime brokerage. Plus the Deutsche Bank PB integration — coordinating product and tech for a seamless cutover.</p>
+        <div class="metrics">
+          <div class="metric"><div class="big">47%</div><div class="lbl">STP rate ↑</div></div>
+          <div class="metric"><div class="big">+8</div><div class="lbl">pts CSAT</div></div>
+          <div class="metric"><div class="big">5</div><div class="lbl">BAs led</div></div>
+        </div>
+      </article>
 
       <article class="work-card">
         <div class="meta">
@@ -414,8 +326,6 @@
     <span>Rev 2026.05 · Chennai</span>
   </div>
 </footer>
-
-<script src="/scripts/particles.js" defer></script>
 
 </body>
 </html>

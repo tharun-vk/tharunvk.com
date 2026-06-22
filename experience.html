@@ -4,15 +4,65 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Experience — Tharun VK</title>
-  <meta name="description" content="About Tharun VK — Senior Product Manager." />
+  <meta name="description" content="Twelve years, four domains, five promotions, each faster than the cohort norm. The full career arc of Tharun VK, Senior Product Manager." />
+
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="/styles/tokens.css" />
   <link rel="stylesheet" href="/styles/base.css" />
   <link rel="stylesheet" href="/styles/components.css" />
+
+  <style>
+    /* Career graph — uses design tokens only, no raw hex. */
+    .arc-graph {
+      max-width: var(--max-content, 1240px);
+      margin: 0 auto var(--s-9);
+      padding: 0 var(--s-7);
+    }
+    .arc-graph-frame {
+      border: 1px solid var(--rivet);
+      background: var(--abyss-2);
+      padding: var(--s-6) var(--s-6) var(--s-5);
+    }
+    .arc-graph-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: var(--s-5);
+      font-family: var(--mono);
+      font-size: var(--t-eyebrow, 11px);
+      text-transform: uppercase;
+      letter-spacing: var(--ls-mono-md);
+      color: var(--paper-mute);
+    }
+    .arc-graph svg { display: block; width: 100%; height: auto; }
+    .arc-graph .gx { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; }
+    .arc-graph .gband { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; }
+    .arc-graph-legend {
+      display: flex;
+      gap: var(--s-6);
+      margin-top: var(--s-4);
+      font-family: var(--mono);
+      font-size: var(--t-body-mono, 12px);
+      letter-spacing: var(--ls-mono-sm);
+      text-transform: uppercase;
+      color: var(--paper-mute);
+    }
+    .arc-graph-legend span { display: inline-flex; align-items: center; gap: var(--s-2); }
+    .arc-graph-legend .swatch { width: 18px; height: 0; border-top-width: 2px; border-top-style: solid; }
+    .arc-graph-legend .mine { color: var(--paper-dim); }
+    .arc-graph-legend .mine .swatch { border-color: var(--waterline); }
+    .arc-graph-legend .typ .swatch { border-color: var(--paper-mute); border-top-style: dashed; }
+
+    @media (max-width: 880px) {
+      .arc-graph { padding: 0 var(--s-5); margin-bottom: var(--s-7); }
+      .arc-graph-frame { padding: var(--s-5) var(--s-4) var(--s-4); }
+    }
+  </style>
 </head>
 <body>
 
@@ -46,14 +96,266 @@
 </nav>
 
 <main>
-  <section class="hero" style="grid-template-columns: 1fr; padding-top: var(--s-11);">
-    <div>
-      <div class="eyebrow">§ Experience · standing by</div>
-      <h1>The full <em>arc.</em></h1>
-      <p class="tagline">A dedicated page for the seven-station chronology, with per-role detail to be added. For now, the condensed version lives on the <a href="/" style="color:var(--waterline);">Index</a>.</p>
-      <p class="lede">If you want to <span class="accent">reach out in the meantime</span>, <a href="mailto:ktharun1993@gmail.com" style="color:var(--waterline);">email</a> or <a href="https://www.linkedin.com/in/tharunvk/" target="_blank" rel="noopener" style="color:var(--waterline);">LinkedIn</a> both work.</p>
+
+  <!-- SECTION HEADER -->
+  <div class="sec-head" id="experience" style="margin-top: var(--s-9);">
+    <div class="num">§ 02</div>
+    <h2>The <em>arc</em></h2>
+    <div class="meta">Career · 2013 → present</div>
+  </div>
+
+  <section class="experience">
+    <p class="exp-intro">Twelve years, four domains. The constant across each station: <em>showing up proactive, taking on more than the role asks for, learning the domain faster, and delivering ahead of schedule</em>. The promotions followed from that — five of them, each visibly faster than the cohort norm. Read as a curve, the path is steeper than the typical one. The chart shows the gap; the chronology below shows the work behind it.</p>
+  </section>
+
+  <!-- CAREER GRAPH -->
+  <div class="arc-graph">
+    <div class="arc-graph-frame">
+      <div class="arc-graph-head">
+        <span>Seniority over time</span>
+        <span>2013 → now</span>
+      </div>
+
+      <svg viewBox="0 0 820 380" role="img" aria-label="A line chart comparing career progression over time. The vertical axis runs from Associate up through Senior, Manager, Senior Manager, to Director. Tharun's path rises steeply across twelve years, reaching the Senior Manager to Director range by 2026. The typical pace stays much flatter over the same period, barely clearing the Senior band.">
+        <title>Career progression: my path versus the typical pace</title>
+        <desc>Tharun's path climbs steeply through five seniority bands while the typical pace rises slowly, widening the gap over time.</desc>
+
+        <!-- band guide lines -->
+        <g stroke="var(--rivet)" stroke-width="1">
+          <line x1="150" y1="40"  x2="800" y2="40"/>
+          <line x1="150" y1="106" x2="800" y2="106"/>
+          <line x1="150" y1="172" x2="800" y2="172"/>
+          <line x1="150" y1="238" x2="800" y2="238"/>
+          <line x1="150" y1="304" x2="800" y2="304"/>
+        </g>
+
+        <!-- band labels -->
+        <g class="gband" fill="var(--paper-mute)" text-anchor="end">
+          <text x="138" y="44">Director</text>
+          <text x="138" y="110">Senior Mgr</text>
+          <text x="138" y="176">Manager</text>
+          <text x="138" y="242">Senior</text>
+          <text x="138" y="308">Associate</text>
+        </g>
+
+        <!-- x axis -->
+        <line x1="150" y1="340" x2="800" y2="340" stroke="var(--rivet)" stroke-width="1"/>
+        <g class="gx" fill="var(--paper-mute)" text-anchor="middle">
+          <text x="150" y="360">2013</text>
+          <text x="248" y="360">2015</text>
+          <text x="360" y="360">2018</text>
+          <text x="492" y="360">2021</text>
+          <text x="610" y="360">2023</text>
+          <text x="800" y="360">2026</text>
+        </g>
+
+        <!-- typical pace: flat early, gentle late lift, barely clears Senior -->
+        <path d="M150,304 C 230,300 300,294 360,284 C 440,270 540,256 800,238"
+          fill="none" stroke="var(--paper-mute)" stroke-width="1.5" stroke-dasharray="5 5"/>
+
+        <!-- my path: steep, stepped climb -->
+        <polyline points="150,304 248,238 360,172 492,128 610,90 800,62"
+          fill="none" stroke="var(--waterline)" stroke-width="2.5"
+          stroke-linejoin="round" stroke-linecap="round"/>
+
+        <!-- my path vertices -->
+        <g fill="var(--waterline)">
+          <circle cx="150" cy="304" r="4"/>
+          <circle cx="248" cy="238" r="4"/>
+          <circle cx="360" cy="172" r="4"/>
+          <circle cx="492" cy="128" r="4"/>
+          <circle cx="610" cy="90"  r="4"/>
+        </g>
+        <!-- live endpoint -->
+        <circle cx="800" cy="62" r="5.5" fill="var(--signal)"/>
+        <circle cx="800" cy="62" r="9" fill="none" stroke="var(--signal)" stroke-width="1" opacity="0.4"/>
+      </svg>
+
+      <div class="arc-graph-legend">
+        <span class="mine"><span class="swatch"></span>My path</span>
+        <span class="typ"><span class="swatch"></span>Typical pace</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FULL ARC -->
+  <section class="experience">
+    <div class="exp-list">
+
+      <div class="exp-row current">
+        <div class="yr">Jan 2026 → now</div>
+        <div class="body">
+          <h3>Senior PM · <em>Reveleer</em></h3>
+          <div class="role">Healthcare · Risk Analytics</div>
+          <p class="note">End-to-end product ownership of the healthcare risk analytics line — strategy through ship, the full release cadence, the customer-facing outcomes.</p>
+          <div class="promo">
+            <div>
+              <span class="label">Joined</span>
+              <span class="val fast">Jan 2026</span>
+            </div>
+            <div>
+              <span class="label">Status</span>
+              <span class="val typical">In flight</span>
+            </div>
+          </div>
+        </div>
+        <div class="marker">
+          <span class="badge">Current station</span>
+          <div class="note">Detail to be added.</div>
+        </div>
+        <div class="status"><span class="v">Live</span></div>
+      </div>
+
+      <div class="exp-row">
+        <div class="yr">Nov 2023 — Dec 2025</div>
+        <div class="body">
+          <h3>Senior PM → Platform PM · <em>Ford</em></h3>
+          <div class="role">Automobile · Vehicle Off-Road, Command Center & Data Services</div>
+          <p class="note">Took a single pilot product from zero to ship, then absorbed two adjacent products into one platform — running design, delivery, and stakeholder rhythm across the three for Ford's global service operations.</p>
+          <div class="promo">
+            <div>
+              <span class="label">Time to promotion</span>
+              <span class="val fast">~1.5 years</span>
+            </div>
+            <div>
+              <span class="label">Typical timing</span>
+              <span class="val typical">3 – 5 years</span>
+            </div>
+          </div>
+        </div>
+        <div class="marker">
+          <span class="badge">Scope expanded</span>
+          <div class="note">Detail to be added.</div>
+        </div>
+        <div class="status"><span class="v">Shipped</span></div>
+      </div>
+
+      <div class="exp-row">
+        <div class="yr">Aug 2021 — Nov 2023</div>
+        <div class="body">
+          <h3>Manager → Senior Manager · <em>Microland</em></h3>
+          <div class="role">Consulting · EY, Serco, and 20+ enterprise clients</div>
+          <p class="note">End-to-end product solutioning across a $20M+ consulting portfolio — twenty enterprise clients, multiple industries, the bridge between business problem and technical execution.</p>
+          <div class="promo">
+            <div>
+              <span class="label">Time to promotion</span>
+              <span class="val fast">~2 years</span>
+            </div>
+            <div>
+              <span class="label">Typical timing</span>
+              <span class="val typical">3 – 5 years</span>
+            </div>
+          </div>
+        </div>
+        <div class="marker">
+          <span class="badge fast">~2× faster</span>
+          <span class="badge young">One of the youngest</span>
+          <div class="note">Detail to be added.</div>
+        </div>
+        <div class="status"><span class="v">Shipped</span></div>
+      </div>
+
+      <div class="exp-row">
+        <div class="yr">Oct 2018 — Aug 2021</div>
+        <div class="body">
+          <h3>BA → Senior BA / Product Owner · <em>BNP Paribas</em></h3>
+          <div class="role">Investment Banking · Global Markets, Corporate Actions</div>
+          <p class="note">Owned the product roadmap for global Corporate Actions — institutional prime brokerage, trading-desk workflows — and led the Deutsche Bank PB acquisition integration end-to-end.</p>
+          <div class="promo">
+            <div>
+              <span class="label">Time to promotion</span>
+              <span class="val fast">~17 months</span>
+            </div>
+            <div>
+              <span class="label">Typical timing</span>
+              <span class="val typical">3 – 4 years</span>
+            </div>
+          </div>
+        </div>
+        <div class="marker">
+          <span class="badge fast">~2× faster</span>
+          <div class="note">Detail to be added.</div>
+        </div>
+        <div class="status"><span class="v">Shipped</span></div>
+      </div>
+
+      <div class="exp-row">
+        <div class="yr">2017 — 2018</div>
+        <div class="body">
+          <h3>Senior Analyst → Asst. Manager · <em>Barclays</em></h3>
+          <div class="role">Investment Banking · Regulatory Risk Reporting · Digital Transformation</div>
+          <p class="note">Owned the Digital Transformation Project for Barclays' Risk, Finance, and Treasury functions — automating ten-plus reporting processes and rebuilding the credit-risk dashboards used across global compliance.</p>
+          <div class="promo">
+            <div>
+              <span class="label">Time to promotion</span>
+              <span class="val fast">1.5 years</span>
+            </div>
+            <div>
+              <span class="label">Typical timing</span>
+              <span class="val typical">3 – 4 years</span>
+            </div>
+          </div>
+        </div>
+        <div class="marker">
+          <span class="badge fast">~2.5× faster</span>
+          <span class="badge young">Youngest in role</span>
+          <div class="note">Detail to be added.</div>
+        </div>
+        <div class="status"><span class="v">Shipped</span></div>
+      </div>
+
+      <div class="exp-row">
+        <div class="yr">2015 — 2017</div>
+        <div class="body">
+          <h3>Fixed Income Analyst → Senior Analyst (MIS) · <em>Barclays</em></h3>
+          <div class="role">Investment Banking · Middle Office</div>
+          <p class="note">Fixed income middle-office work — trade lifecycle, risk metrics, MIS reporting feeding daily desk-level decisions across the global markets business.</p>
+          <div class="promo">
+            <div>
+              <span class="label">Time to promotion</span>
+              <span class="val fast">8 months</span>
+            </div>
+            <div>
+              <span class="label">Typical timing</span>
+              <span class="val typical">3 – 4 years</span>
+            </div>
+          </div>
+        </div>
+        <div class="marker">
+          <span class="badge fast">~5× faster</span>
+          <div class="note">Detail to be added.</div>
+        </div>
+        <div class="status"><span class="v">Shipped</span></div>
+      </div>
+
+      <div class="exp-row">
+        <div class="yr">2013 — 2015</div>
+        <div class="body">
+          <h3>Analyst → Advanced Analyst · <em>EY</em></h3>
+          <div class="role">Consulting · Tax Advisory · HNI / CXO Clients</div>
+          <p class="note">Tax advisory work for high-net-worth individuals and CXO clients — reviewed 250+ complex returns at full compliance, and built a faster client-data-collection process that earned EY's Global Extra Miler Award.</p>
+          <div class="promo">
+            <div>
+              <span class="label">Time to promotion</span>
+              <span class="val fast">6 months</span>
+            </div>
+            <div>
+              <span class="label">Typical timing</span>
+              <span class="val typical">2 – 3 years</span>
+            </div>
+          </div>
+        </div>
+        <div class="marker">
+          <span class="badge fast">Fastest in cohort</span>
+          <span class="badge young">Global Extra Miler</span>
+          <div class="note">Detail to be added.</div>
+        </div>
+        <div class="status"><span class="v">Shipped</span></div>
+      </div>
+
     </div>
   </section>
+
 </main>
 
 <footer>
