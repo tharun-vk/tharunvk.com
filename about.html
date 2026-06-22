@@ -4,15 +4,110 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About — Tharun VK</title>
-  <meta name="description" content="About Tharun VK — Senior Product Manager." />
+  <meta name="description" content="Senior product manager twelve years in, building healthcare risk analytics at Reveleer. A taste for regulated, data-heavy, complicated domains." />
+
+  <!-- Open Graph / social share -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:url" content="https://tharunvk.com/about.html" />
+  <meta property="og:title" content="About — Tharun VK" />
+  <meta property="og:description" content="Senior product manager twelve years in, building healthcare risk analytics at Reveleer. A taste for regulated, data-heavy, complicated domains." />
+  <meta property="og:image" content="https://tharunvk.com/assets/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="/styles/tokens.css" />
   <link rel="stylesheet" href="/styles/base.css" />
   <link rel="stylesheet" href="/styles/components.css" />
+
+  <style>
+    /* About-page-only layout. Uses design tokens; no raw hex values. */
+    .about-wrap {
+      max-width: var(--max-content, 1240px);
+      margin: 0 auto;
+      padding: var(--s-11) var(--s-7) var(--s-9);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: var(--s-9);
+      align-items: start;
+    }
+    .about-grid .prose-col .eyebrow { margin-bottom: var(--s-4); }
+    .about-grid h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: var(--t-h1);
+      line-height: 0.98;
+      letter-spacing: -0.025em;
+      margin-bottom: var(--s-7);
+    }
+    .about-grid h1 em { font-style: italic; color: var(--waterline); }
+
+    .about-prose p {
+      font-family: var(--serif);
+      font-size: var(--t-prose);
+      line-height: 1.65;
+      color: var(--paper-dim);
+      margin-bottom: var(--s-5);
+    }
+    .about-prose p:last-child { margin-bottom: 0; }
+    .about-prose em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--waterline);
+    }
+
+    /* Portrait card: glassmorphic surface consistent with site cards */
+    .about-portrait {
+      position: sticky;
+      top: var(--s-9);
+      border: 1px solid var(--rivet);
+      background: var(--abyss-2);
+      padding: var(--s-3);
+    }
+    .about-portrait .frame-line {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: var(--t-eyebrow, 11px);
+      text-transform: uppercase;
+      letter-spacing: var(--ls-mono-sm);
+      color: var(--paper-mute);
+      padding: var(--s-2) var(--s-2) var(--s-3);
+    }
+    .about-portrait .pip {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--signal);
+      align-self: center;
+    }
+    .about-portrait img {
+      display: block;
+      width: 100%;
+      height: auto;
+      filter: grayscale(0.15) contrast(1.02);
+    }
+    .about-portrait .caption {
+      font-family: var(--mono);
+      font-size: var(--t-body-mono, 12px);
+      letter-spacing: var(--ls-mono-sm);
+      text-transform: uppercase;
+      color: var(--paper-mute);
+      padding: var(--s-3) var(--s-2) var(--s-2);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 880px) {
+      .about-wrap { padding: var(--s-9) var(--s-5) var(--s-8); }
+      .about-grid { grid-template-columns: 1fr; gap: var(--s-7); }
+      .about-portrait { position: static; order: -1; max-width: 420px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -46,14 +141,36 @@
 </nav>
 
 <main>
-  <section class="hero" style="grid-template-columns: 1fr; padding-top: var(--s-11);">
-    <div>
-      <div class="eyebrow">§ About · standing by</div>
-      <h1>The longer <em>read.</em></h1>
-      <p class="tagline">This page is being written. For now, the <a href="/" style="color:var(--waterline);">Index</a> carries the short version — twelve years, four domains, five promotions — and the rest of the story lands here when it's worth telling properly.</p>
-      <p class="lede">If you want to <span class="accent">reach out in the meantime</span>, <a href="mailto:ktharun1993@gmail.com" style="color:var(--waterline);">email</a> or <a href="https://www.linkedin.com/in/tharunvk/" target="_blank" rel="noopener" style="color:var(--waterline);">LinkedIn</a> both work.</p>
+  <div class="about-wrap">
+    <div class="about-grid">
+
+      <div class="prose-col">
+        <div class="eyebrow">§ About · the longer read</div>
+        <h1>Simple on the surface. <em>Complex underneath.</em></h1>
+
+        <div class="about-prose">
+          <p>I'm a senior product manager twelve years in, currently building healthcare risk analytics at Reveleer. Across twelve years, what runs through the work is a particular taste in problems: regulated, data-heavy, complicated domains where the underlying mess is the whole point of the work. Tax advisory, regulatory reporting, corporate actions, vehicle service operations, and now healthcare risk. None of these are products people fall in love with at first sight. They're products people <em>depend</em> on, quietly. The job is to make them feel ordinary on the surface while the structural complexity stays where it belongs, out of sight.</p>
+
+          <p>The direction I'm leaning into now is the intersection of <em>AI and healthcare</em>. There's a generation of products to be built that take what's possible with modern models and bend them toward the operational reality of how care actually gets delivered. I want to be in that work. Alongside it, two things I keep close. I'm starting to write about product management and AI in public. And I advise small businesses pro bono on the side, currently friends and family running everything from a regional supermarket group to a gelato parlour, and looking to extend the same kind of help to other small businesses and early-stage startups that could use it.</p>
+
+          <p>Outside of work, I read a lot, mostly product writing, macroeconomic commentary, and whatever else catches the eye. Travel pulls me whenever there's an opening in the calendar, and the list of places I want to get to is longer than the list I've actually been. Screens take most evenings, TV and films broadly, anime more often than my schedule justifies. And the controllers, both PC and PlayStation, get more time than I'd admit to in a job interview.</p>
+        </div>
+      </div>
+
+      <aside class="about-portrait">
+        <div class="frame-line">
+          <span>FILE · TVK / PORTRAIT</span>
+          <span class="pip"></span>
+        </div>
+        <img src="/assets/tharun-about.jpg" alt="Tharun VK" />
+        <div class="caption">
+          <span>Tharun VK</span>
+          <span>Chennai, IN</span>
+        </div>
+      </aside>
+
     </div>
-  </section>
+  </div>
 </main>
 
 <footer>
