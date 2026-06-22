@@ -105,70 +105,77 @@
   </div>
 
   <section class="experience">
-    <p class="exp-intro">Twelve years, four domains. The constant across each station: <em>showing up proactive, taking on more than the role asks for, learning the domain faster, and delivering ahead of schedule</em>. The promotions followed from that — five of them, each visibly faster than the cohort norm. Read as a curve, the path is steeper than the typical one. The chart shows the gap; the chronology below shows the work behind it.</p>
+    <p class="exp-intro">Twelve years, four domains. The constant across each station: <em>showing up proactive, taking on more than the role asks for, learning the domain faster, and delivering ahead of schedule</em>. The result is six step-changes in twelve years — five promotions and a platform-scope expansion at Ford — each well ahead of the cohort norm. Plotted against time, they stack up far above the typical pace. The chart shows the gap; the chronology below shows the work behind it.</p>
   </section>
 
   <!-- CAREER GRAPH -->
   <div class="arc-graph">
     <div class="arc-graph-frame">
       <div class="arc-graph-head">
-        <span>Seniority over time</span>
+        <span>Career progressions over time</span>
         <span>2013 → now</span>
       </div>
 
-      <svg viewBox="0 0 820 380" role="img" aria-label="A line chart comparing career progression over time. The vertical axis runs from Associate up through Senior, Manager, Senior Manager, to Director. Tharun's path rises steeply across twelve years, reaching the Senior Manager to Director range by 2026. The typical pace stays much flatter over the same period, barely clearing the Senior band.">
-        <title>Career progression: my path versus the typical pace</title>
-        <desc>Tharun's path climbs steeply through five seniority bands while the typical pace rises slowly, widening the gap over time.</desc>
+      <svg viewBox="0 0 820 380" role="img" aria-label="A step chart comparing cumulative career progressions over time, counting promotions and major scope expansions. The vertical axis runs from zero to seven; the horizontal axis runs from 2013 to 2026. Tharun's path steps up to six progressions, with most arriving early. The typical pace rises slowly to about three over the same twelve years.">
+        <title>Career progressions over time: my pace versus the typical pace</title>
+        <desc>Tharun's step line reaches six progressions well ahead of the typical pace, which climbs gently to about three across the same period.</desc>
 
-        <!-- band guide lines -->
+        <!-- count guide lines: 0 to 7 -->
         <g stroke="var(--rivet)" stroke-width="1">
-          <line x1="150" y1="40"  x2="800" y2="40"/>
-          <line x1="150" y1="106" x2="800" y2="106"/>
-          <line x1="150" y1="172" x2="800" y2="172"/>
-          <line x1="150" y1="238" x2="800" y2="238"/>
+          <line x1="150" y1="66"  x2="800" y2="66"/>
+          <line x1="150" y1="100" x2="800" y2="100"/>
+          <line x1="150" y1="134" x2="800" y2="134"/>
+          <line x1="150" y1="168" x2="800" y2="168"/>
+          <line x1="150" y1="202" x2="800" y2="202"/>
+          <line x1="150" y1="236" x2="800" y2="236"/>
+          <line x1="150" y1="270" x2="800" y2="270"/>
           <line x1="150" y1="304" x2="800" y2="304"/>
         </g>
 
-        <!-- band labels -->
+        <!-- y labels: progression count -->
         <g class="gband" fill="var(--paper-mute)" text-anchor="end">
-          <text x="138" y="44">Director</text>
-          <text x="138" y="110">Sr Manager</text>
-          <text x="138" y="176">Manager</text>
-          <text x="138" y="242">Senior</text>
-          <text x="138" y="308">Associate</text>
+          <text x="138" y="70">7</text>
+          <text x="138" y="104">6</text>
+          <text x="138" y="138">5</text>
+          <text x="138" y="172">4</text>
+          <text x="138" y="206">3</text>
+          <text x="138" y="240">2</text>
+          <text x="138" y="274">1</text>
+          <text x="138" y="308">0</text>
         </g>
+        <text x="150" y="38" class="gband" fill="var(--paper-mute)" text-anchor="start">Career progressions</text>
 
         <!-- x axis -->
-        <line x1="150" y1="340" x2="800" y2="340" stroke="var(--rivet)" stroke-width="1"/>
+        <line x1="150" y1="304" x2="800" y2="304" stroke="var(--rivet)" stroke-width="1.5"/>
         <g class="gx" fill="var(--paper-mute)" text-anchor="middle">
-          <text x="150" y="360">2013</text>
-          <text x="248" y="360">2015</text>
-          <text x="360" y="360">2018</text>
-          <text x="492" y="360">2021</text>
-          <text x="610" y="360">2023</text>
-          <text x="800" y="360">2026</text>
+          <text x="150" y="324">2013</text>
+          <text x="277" y="324">2016</text>
+          <text x="404" y="324">2019</text>
+          <text x="546" y="324">2022</text>
+          <text x="800" y="324">2026</text>
         </g>
 
-        <!-- typical pace: flat early, gentle late lift, barely clears Senior -->
-        <path d="M150,304 C 230,300 300,294 360,284 C 440,270 540,256 800,238"
+        <!-- typical pace: ~one step every 3-4 years, reaching ~3 by 2026 -->
+        <path d="M150,304 L 340,270 L 530,236 L 800,202"
           fill="none" stroke="var(--paper-mute)" stroke-width="1.5" stroke-dasharray="5 5"/>
 
-        <!-- my path: steep, stepped climb -->
-        <polyline points="150,304 248,238 360,172 492,128 610,90 800,62"
+        <!-- my path: stepped, each progression a discrete jump -->
+        <polyline points="150,304 213,304 213,270 277,270 277,236 340,236 340,202 404,202 404,168 520,168 520,134 600,134 600,100 800,100"
           fill="none" stroke="var(--waterline)" stroke-width="2.5"
           stroke-linejoin="round" stroke-linecap="round"/>
 
-        <!-- my path vertices -->
+        <!-- progression event dots -->
         <g fill="var(--waterline)">
-          <circle cx="150" cy="304" r="4"/>
-          <circle cx="248" cy="238" r="4"/>
-          <circle cx="360" cy="172" r="4"/>
-          <circle cx="492" cy="128" r="4"/>
-          <circle cx="610" cy="90"  r="4"/>
+          <circle cx="213" cy="270" r="4"/>
+          <circle cx="277" cy="236" r="4"/>
+          <circle cx="340" cy="202" r="4"/>
+          <circle cx="404" cy="168" r="4"/>
+          <circle cx="520" cy="134" r="4"/>
+          <circle cx="600" cy="100" r="4"/>
         </g>
-        <!-- live endpoint -->
-        <circle cx="800" cy="62" r="5.5" fill="var(--signal)"/>
-        <circle cx="800" cy="62" r="9" fill="none" stroke="var(--signal)" stroke-width="1" opacity="0.4"/>
+        <!-- live endpoint, current station -->
+        <circle cx="800" cy="100" r="5.5" fill="var(--signal)"/>
+        <circle cx="800" cy="100" r="9" fill="none" stroke="var(--signal)" stroke-width="1" opacity="0.4"/>
       </svg>
 
       <div class="arc-graph-legend">
